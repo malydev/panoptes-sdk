@@ -1,9 +1,17 @@
 {
 	"name": "@panoptes/sdk",
-	"version": "0.1.0",
-	"description": "Panoptes SQL auditing SDK for Node.js",
+	"version": "0.2.0",
+	"description": "Panoptes SQL auditing SDK for Node.js with multi-database support, before/after data capture, and database transport",
 	"author": "malydev",
 	"license": "MIT",
+	"homepage": "https://github.com/malydev/panoptes-sdk#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/malydev/panoptes-sdk.git"
+	},
+	"bugs": {
+		"url": "https://github.com/malydev/panoptes-sdk/issues"
+	},
 	"type": "module",
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.js",
@@ -31,7 +39,18 @@
 		"sql",
 		"security",
 		"monitoring",
-		"database"
+		"database",
+		"postgres",
+		"postgresql",
+		"mysql",
+		"mssql",
+		"sql-server",
+		"sqlite",
+		"oracle",
+		"query-auditing",
+		"database-audit",
+		"compliance",
+		"logging"
 	],
 	"engines": {
 		"node": ">=18"
