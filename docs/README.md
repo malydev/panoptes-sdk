@@ -1,24 +1,80 @@
 # Panoptes SDK Documentation
 
-This directory contains the complete documentation for Panoptes SDK, built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
+Clean, modern documentation site built with Astro and Tailwind CSS following SOLID principles.
 
-## 🚀 Quick Start
+## 🏗️ Architecture
 
-### Development
+This project follows SOLID principles for maintainable, scalable components:
+
+### Single Responsibility Principle
+Each component has one clear purpose:
+- `BaseLayout.astro` - Page structure only
+- `Button.astro` - Button rendering only
+- `Card.astro` - Card container only
+- `Hero.astro` - Hero section only
+
+### Open/Closed Principle
+Components are open for extension via props and slots:
+```astro
+<Card title="Custom Title" icon="🎯">
+  <p>Any content here</p>
+</Card>
+```
+
+### Liskov Substitution Principle
+Components can be swapped without breaking functionality:
+```astro
+<!-- Can use any variant -->
+<Button variant="primary">Click me</Button>
+<Button variant="secondary">Or me</Button>
+```
+
+### Interface Segregation Principle
+Components only require props they actually use:
+```astro
+interface Props {
+  title?: string;  // Optional, only if needed
+  required: string; // Required only when necessary
+}
+```
+
+### Dependency Inversion Principle
+High-level pages depend on abstractions (components), not concrete implementations.
+
+## 📂 Project Structure
+
+```
+docs/
+├── src/
+│   ├── components/
+│   │   ├── layout/          # Layout components
+│   │   ├── ui/              # Reusable UI components
+│   │   │   ├── Button.astro
+│   │   │   └── Card.astro
+│   │   └── content/         # Content components
+│   │       ├── Hero.astro
+│   │       └── CodeExample.astro
+│   ├── layouts/
+│   │   └── BaseLayout.astro # Base page layout
+│   ├── pages/
+│   │   └── index.astro      # Home page (uses composition)
+│   ├── styles/
+│   │   └── global.css       # Tailwind styles
+│   └── types/               # TypeScript types
+├── public/                  # Static assets
+│   └── favicon.svg
+└── astro.config.mjs        # Astro config
+```
+
+## 🚀 Commands
 
 ```bash
 # Install dependencies
 pnpm install
 
-# Start development server
+# Start dev server
 pnpm dev
 
-# Open http://localhost:4321
-```
-
-### Build
-
-```bash
 # Build for production
 pnpm build
 
@@ -26,79 +82,26 @@ pnpm build
 pnpm preview
 ```
 
-## 📂 Structure
+## 🎨 Design System
 
-```
-docs/
-├── src/
-│   ├── content/
-│   │   └── docs/              # Documentation content (Markdown)
-│   │       ├── getting-started/
-│   │       ├── concepts/
-│   │       ├── databases/
-│   │       ├── transports/
-│   │       ├── advanced/
-│   │       ├── api/
-│   │       ├── examples/
-│   │       ├── comparison/
-│   │       ├── compliance/
-│   │       └── contributing/
-│   ├── assets/                # Images and assets
-│   └── styles/                # Custom CSS
-├── public/                    # Static files
-└── astro.config.mjs          # Astro configuration
-```
+### Colors
+- Primary: Blue (`#3b82f6`)
+- Secondary: Purple (`#8b5cf6`)
+- Background: Slate shades
 
-## 📝 Adding Content
+### Components
+All components are modular and reusable following component composition patterns.
 
-### Create a New Page
+## ✨ Features
 
-1. Add a new `.md` or `.mdx` file in `src/content/docs/`
-2. Add frontmatter:
+- ⚡ Fast builds with Astro
+- 🎨 Tailwind CSS for styling
+- 🌙 Dark mode support
+- 📱 Fully responsive
+- ♿ Accessible
+- 🧩 Component-based architecture
+- 🔧 TypeScript for type safety
 
-```md
----
-title: Your Page Title
-description: A brief description
----
-
-# Your Content Here
-```
-
-3. The page will automatically appear in navigation based on `astro.config.mjs`
-
-### Update Navigation
-
-Edit `astro.config.mjs` to modify the sidebar navigation structure.
-
-## 🎨 Styling
-
-Custom styles are in `src/styles/custom.css`.
-
-Starlight provides built-in components:
-- `<Card>` and `<CardGrid>`
-- `<Tabs>` and `<TabItem>`
-- `<Aside>` for callouts
-- And more...
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`            | Installs dependencies                            |
-| `pnpm dev`                | Starts local dev server at `localhost:4321`      |
-| `pnpm build`              | Build your production site to `./dist/`          |
-| `pnpm preview`            | Preview your build locally, before deploying     |
-| `pnpm astro ...`          | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help`    | Get help using the Astro CLI                     |
-
-## 📚 Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Starlight Documentation](https://starlight.astro.build)
-
-## 👤 Maintainer
+## 👤 Created by
 
 **[malydev](https://github.com/malydev) (Miguel Lipa)**

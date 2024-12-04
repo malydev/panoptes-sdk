@@ -1,0 +1,23 @@
+---
+/**
+ * CodeExample Component
+ * Single Responsibility: Display code examples with proper formatting
+ */
+interface Props {
+  title?: string;
+  language?: string;
+}
+
+const { title, language = 'javascript' } = Astro.props;
+---
+
+<div class="my-8">
+  {title && (
+    <div class="bg-slate-800 text-white px-6 py-3 rounded-t-lg font-semibold border-b border-slate-700">
+      {title}
+    </div>
+  )}
+  <div class="relative">
+    <pre class={`bg-slate-900 text-slate-100 p-6 overflow-x-auto ${title ? 'rounded-b-lg' : 'rounded-lg'} shadow-xl border border-slate-700`}><code class={`language-${language}`}><slot /></code></pre>
+  </div>
+</div>

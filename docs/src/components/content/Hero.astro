@@ -1,0 +1,37 @@
+---
+/**
+ * Hero Component
+ * Single Responsibility: Display hero section
+ */
+import Button from '../ui/Button.astro';
+
+interface Props {
+  title: string;
+  tagline: string;
+}
+
+const { title, tagline } = Astro.props;
+---
+
+<section class="relative py-20 px-6 overflow-hidden">
+  <!-- Gradient Background -->
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 opacity-10"></div>
+
+  <!-- Content -->
+  <div class="relative max-w-5xl mx-auto text-center">
+    <h1 class="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+      {title}
+    </h1>
+    <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto">
+      {tagline}
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <Button href="#getting-started" variant="primary" size="lg">
+        Get Started →
+      </Button>
+      <Button href="https://github.com/malydev/panoptes-sdk" variant="secondary" size="lg">
+        View on GitHub
+      </Button>
+    </div>
+  </div>
+</section>
