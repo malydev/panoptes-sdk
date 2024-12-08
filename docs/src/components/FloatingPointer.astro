@@ -1,0 +1,25 @@
+<div data-pointer class="pointer-events-none absolute z-30 h-16 w-16 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-out" style="left: 50%; top: 45%;">
+  <div class="relative h-full w-full">
+    <div class="absolute inset-0 rounded-full border-2 border-red-500/60 animate-ping"></div>
+    <div class="absolute inset-1 rounded-full border-2 border-red-400 bg-red-500/10 backdrop-blur shadow-[0_0_25px_rgba(239,68,68,0.8)]"></div>
+    <div class="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-red-400"></div>
+    <div class="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-red-400"></div>
+    <div class="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-400 shadow-[0_0_15px_rgba(239,68,68,1)]"></div>
+  </div>
+</div>
+
+<script>
+  const pointer = document.querySelector('[data-pointer]');
+  function movePointer() {
+    const x = 8 + Math.random() * 84;
+    const y = 12 + Math.random() * 70;
+    if (pointer) {
+      pointer.style.left = `${x}%`;
+      pointer.style.top = `${y}%`;
+    }
+  }
+  const interval = setInterval(movePointer, 1400);
+  if (import.meta.hot) {
+    import.meta.hot.dispose(() => clearInterval(interval));
+  }
+</script>
