@@ -1,160 +1,54 @@
 ---
-/**
- * Home Page
- * Uses composition to build page from smaller components
- */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/content/Hero.astro';
-import Card from '../components/ui/Card.astro';
-import CodeExample from '../components/content/CodeExample.astro';
-import Button from '../components/ui/Button.astro';
+import { SqlAuditTable } from '../components/SqlAuditTable';
+import { LanguageToggle } from '../components/LanguageToggle';
+import { GithubIcon } from '../components/icons';
+import HeroContent from '../components/HeroContent.astro';
+import AuditPanel from '../components/AuditPanel.astro';
+import BackgroundFX from '../components/BackgroundFX.astro';
+import FloatingPointer from '../components/FloatingPointer.astro';
 ---
 
-<BaseLayout
-  title="Panoptes SDK - Enterprise SQL Auditing"
-  description="Automatically audit all SQL queries with rich context, flexible rules, and zero configuration">
+<BaseLayout title="Panoptes SDK" description="Audit trails for every SQL query">
+  <div class="relative h-screen w-full overflow-hidden bg-slate-950 text-white">
+    <div class="absolute left-0 right-0 top-0 z-30 flex items-center justify-end gap-3 px-4 py-4 sm:px-6">
+      <a
+        href="https://github.com/malydev/panoptes-sdk"
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold text-white backdrop-blur transition hover:border-white/50 hover:bg-white/20 sm:text-sm"
+      >
+        <GithubIcon />
+        GitHub
+      </a>
+      <LanguageToggle client:load />
+    </div>
+    <BackgroundFX />
+    <FloatingPointer client:load />
 
-  <!-- Hero Section -->
-  <Hero
-    title="Panoptes SDK"
-    tagline="Enterprise-grade SQL auditing for modern applications. A better alternative to database triggers."
-  />
-
-  <!-- Features Section -->
-  <section class="py-16 px-6">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-12 text-slate-900 dark:text-white">
-        Why Panoptes?
-      </h2>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card title="⚡ Zero Configuration" icon="⚡">
-          <p>Auto-creates audit tables. No manual setup, no SQL scripts. Just install and start auditing.</p>
-        </Card>
-
-        <Card title="🗄️ Multi-Database" icon="🗄️">
-          <p>PostgreSQL, MySQL, MSSQL, SQLite, and Oracle. One SDK, all databases.</p>
-        </Card>
-
-        <Card title="👤 Rich Context" icon="👤">
-          <p>Track who, what, when, and where for every query with full application context.</p>
-        </Card>
-
-        <Card title="🎯 Flexible Rules" icon="🎯">
-          <p>Configure auditing per table or operation type with powerful rule engine.</p>
-        </Card>
-
-        <Card title="📊 Multiple Transports" icon="📊">
-          <p>Send events to Console, File, HTTP endpoints, or separate databases.</p>
-        </Card>
-
-        <Card title="⚙️ Production Ready" icon="⚙️">
-          <p>Battle-tested, optimized, and secure. Used in production worldwide.</p>
-        </Card>
+    <div class="absolute inset-0 overflow-hidden p-4 md:p-6 lg:p-10 opacity-80 pointer-events-none">
+      <div class="h-full">
+        <SqlAuditTable client:only="react" />
       </div>
     </div>
-  </section>
 
-  <!-- Quick Start Section -->
-  <section id="getting-started" class="py-16 px-6 bg-white/50 dark:bg-slate-900/50">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-12 text-slate-900 dark:text-white">
-        Quick Start
-      </h2>
-
-      <CodeExample title="1. Install" language="bash">
-npm install @panoptes/sdk
-      </CodeExample>
-
-      <CodeExample title="2. Initialize & Wrap Client" language="javascript">
-import { initAudit, createAuditedPostgresClient } from '@panoptes/sdk';
-import { Client } from 'pg';
-
-// Initialize Panoptes
-initAudit({
-  appName: 'my-app',
-  transports: {
-    enabled: ['database'],
-    database: {
-      client: auditDbClient,
-      engine: 'postgres',
-      autoCreateTable: true  // ⭐ Auto-creates audit table
-    }
-  }
-});
-
-// Wrap your database client
-const client = new Client({ /* config */ });
-const auditedClient = createAuditedPostgresClient(client, {
-  host: 'localhost',
-  database: 'mydb'
-});
-
-// All queries are now automatically audited! ✅
-await auditedClient.query('SELECT * FROM users WHERE id = $1', [123]);
-      </CodeExample>
-
-      <div class="text-center mt-12">
-        <Button href="#docs" variant="primary" size="lg">
-          Read Full Documentation
-        </Button>
+    <div class="relative z-10 flex h-full w-full items-center justify-center px-4 py-8 sm:py-10 md:py-12">
+      <div class="grid w-full max-w-6xl items-center justify-items-center gap-10 md:gap-12 lg:grid-cols-2 lg:justify-items-start">
+        <HeroContent />
+        <AuditPanel />
       </div>
     </div>
-  </section>
 
-  <!-- Comparison Section -->
-  <section class="py-16 px-6">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="text-4xl font-bold text-center mb-12 text-slate-900 dark:text-white">
-        Better Than Database Triggers
-      </h2>
-
-      <div class="bg-white dark:bg-slate-800 rounded-xl shadow-xl overflow-hidden">
-        <table class="w-full">
-          <thead class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-            <tr>
-              <th class="px-6 py-4 text-left">Feature</th>
-              <th class="px-6 py-4 text-center">Triggers ❌</th>
-              <th class="px-6 py-4 text-center">Panoptes ✅</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-              <td class="px-6 py-4 font-medium">Portable</td>
-              <td class="px-6 py-4 text-center text-red-600">❌</td>
-              <td class="px-6 py-4 text-center text-green-600">✅</td>
-            </tr>
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-              <td class="px-6 py-4 font-medium">Rich App Context</td>
-              <td class="px-6 py-4 text-center text-red-600">❌</td>
-              <td class="px-6 py-4 text-center text-green-600">✅</td>
-            </tr>
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-              <td class="px-6 py-4 font-medium">Multiple Destinations</td>
-              <td class="px-6 py-4 text-center text-red-600">❌</td>
-              <td class="px-6 py-4 text-center text-green-600">✅</td>
-            </tr>
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-              <td class="px-6 py-4 font-medium">Version Controlled</td>
-              <td class="px-6 py-4 text-center text-red-600">❌</td>
-              <td class="px-6 py-4 text-center text-green-600">✅</td>
-            </tr>
-            <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50">
-              <td class="px-6 py-4 font-medium">Non-blocking</td>
-              <td class="px-6 py-4 text-center text-orange-600">⚠️</td>
-              <td class="px-6 py-4 text-center text-green-600">✅</td>
-            </tr>
-          </tbody>
-        </table>
+    <footer class="pointer-events-auto absolute bottom-0 left-0 right-0 z-20 flex items-center justify-center border-t border-white/10 bg-transparent px-4 py-5 text-center text-sm text-white">
+      <div class="flex flex-col items-center gap-1">
+        <span class="text-2xl font-black tracking-[0.18em] text-white">malydev</span>
+        <span class="text-slate-200">
+          <span class="lang-en">Built by</span>
+          <span class="lang-es">Creado por</span>
+          <span class="ml-1 font-semibold">Miguel Lipa</span>
+        </span>
       </div>
-    </div>
-  </section>
+    </footer>
+  </div>
 
-  <!-- Footer -->
-  <footer class="py-12 px-6 border-t border-slate-200 dark:border-slate-700">
-    <div class="max-w-7xl mx-auto text-center text-slate-600 dark:text-slate-400">
-      <p class="text-lg mb-2">Created by <a href="https://github.com/malydev" class="font-semibold text-blue-600 hover:text-blue-700">malydev</a> (Miguel Lipa)</p>
-      <p class="text-sm">MIT License • Built with ❤️ for the developer community</p>
-    </div>
-  </footer>
 </BaseLayout>

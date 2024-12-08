@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    overflow: hidden;
+  }
+}
+
+/* Idiomas: mostrar/ocultar según data-lang en <html> */
+.lang-en { display: inline; }
+.lang-es { display: none; }
+:root[data-lang='es'] .lang-en { display: none; }
+:root[data-lang='es'] .lang-es { display: inline; }
