@@ -1,0 +1,45 @@
+{
+	"name": "@panoptes/sdk",
+	"version": "0.1.0",
+	"description": "Panoptes SQL auditing SDK for Node.js",
+	"author": "malydev",
+	"license": "MIT",
+	"type": "module",
+	"main": "./dist/cjs/index.cjs",
+	"module": "./dist/esm/index.js",
+	"types": "./dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"require": "./dist/cjs/index.cjs",
+			"import": "./dist/esm/index.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build:esm": "esbuild src/index.js --format=esm --platform=node --outfile=dist/esm/index.js",
+		"build:cjs": "esbuild src/index.js --format=cjs --platform=node --outfile=dist/cjs/index.cjs",
+		"build": "rimraf dist && pnpm build:esm && pnpm build:cjs",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"test": "vitest"
+	},
+	"keywords": [
+		"panoptes",
+		"audit",
+		"sql",
+		"security",
+		"monitoring",
+		"database"
+	],
+	"engines": {
+		"node": ">=18"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.7",
+		"esbuild": "^0.27.0",
+		"rimraf": "^6.1.2",
+		"vitest": "^4.0.14"
+	}
+}
