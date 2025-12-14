@@ -1,0 +1,249 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import { InlineCode } from '../../components/ui/code-block';
+---
+
+<DocsLayout title="Comparison - Panoptes SDK" description="Compare Panoptes SDK with other solutions">
+  <div class="prose dark:prose-invert max-w-none">
+    <h1>Comparison</h1>
+    <p class="lead text-xl text-muted-foreground">
+      See how Panoptes SDK compares to other auditing and logging solutions.
+    </p>
+
+    <h2>Why Panoptes?</h2>
+    <p>
+      While there are many logging and auditing solutions available, Panoptes is specifically designed for SQL audit trails with before/after data capture. Here's how it compares to common alternatives:
+    </p>
+
+    <h2>vs. Database Triggers</h2>
+    <div class="not-prose">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-border">
+          <thead>
+            <tr class="bg-muted/50">
+              <th class="px-4 py-3 text-left text-sm font-semibold">Feature</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Panoptes</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Database Triggers</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr>
+              <td class="px-4 py-3 text-sm">User Context</td>
+              <td class="px-4 py-3 text-sm">✅ Full user, IP, session info</td>
+              <td class="px-4 py-3 text-sm">❌ Only database user</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Application Context</td>
+              <td class="px-4 py-3 text-sm">✅ Request ID, metadata, etc.</td>
+              <td class="px-4 py-3 text-sm">❌ Not available</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Multi-destination</td>
+              <td class="px-4 py-3 text-sm">✅ Multiple transports</td>
+              <td class="px-4 py-3 text-sm">❌ Only same database</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Database Agnostic</td>
+              <td class="px-4 py-3 text-sm">✅ Works with any SQL DB</td>
+              <td class="px-4 py-3 text-sm">❌ DB-specific syntax</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Performance Impact</td>
+              <td class="px-4 py-3 text-sm">⚠️ Application-level overhead</td>
+              <td class="px-4 py-3 text-sm">⚠️ Database-level overhead</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Setup Complexity</td>
+              <td class="px-4 py-3 text-sm">✅ Simple wrapper</td>
+              <td class="px-4 py-3 text-sm">❌ Complex DDL for every table</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>vs. Application Logging</h2>
+    <div class="not-prose">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-border">
+          <thead>
+            <tr class="bg-muted/50">
+              <th class="px-4 py-3 text-left text-sm font-semibold">Feature</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Panoptes</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Manual Logging</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr>
+              <td class="px-4 py-3 text-sm">Automatic Capture</td>
+              <td class="px-4 py-3 text-sm">✅ Automatic before/after</td>
+              <td class="px-4 py-3 text-sm">❌ Manual implementation</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Developer Effort</td>
+              <td class="px-4 py-3 text-sm">✅ Zero per query</td>
+              <td class="px-4 py-3 text-sm">❌ Code for every query</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Consistency</td>
+              <td class="px-4 py-3 text-sm">✅ Always consistent format</td>
+              <td class="px-4 py-3 text-sm">❌ Varies by developer</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Coverage</td>
+              <td class="px-4 py-3 text-sm">✅ All queries automatically</td>
+              <td class="px-4 py-3 text-sm">❌ Easy to miss queries</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Maintenance</td>
+              <td class="px-4 py-3 text-sm">✅ Centralized configuration</td>
+              <td class="px-4 py-3 text-sm">❌ Scattered throughout codebase</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>vs. Query Logging (pg_audit, MySQL general log)</h2>
+    <div class="not-prose">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-border">
+          <thead>
+            <tr class="bg-muted/50">
+              <th class="px-4 py-3 text-left text-sm font-semibold">Feature</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Panoptes</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Query Logging</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr>
+              <td class="px-4 py-3 text-sm">Before/After Data</td>
+              <td class="px-4 py-3 text-sm">✅ Full data snapshots</td>
+              <td class="px-4 py-3 text-sm">❌ Only query text</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Application Context</td>
+              <td class="px-4 py-3 text-sm">✅ User, session, request info</td>
+              <td class="px-4 py-3 text-sm">❌ Not available</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Structured Events</td>
+              <td class="px-4 py-3 text-sm">✅ Rich JSON objects</td>
+              <td class="px-4 py-3 text-sm">❌ Unstructured logs</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Query Parameters</td>
+              <td class="px-4 py-3 text-sm">✅ Included in context</td>
+              <td class="px-4 py-3 text-sm">⚠️ May be redacted</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Performance</td>
+              <td class="px-4 py-3 text-sm">⚠️ Extra queries for before/after</td>
+              <td class="px-4 py-3 text-sm">✅ Minimal overhead</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Filtering</td>
+              <td class="px-4 py-3 text-sm">✅ Application-level control</td>
+              <td class="px-4 py-3 text-sm">⚠️ Limited filtering options</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>vs. Change Data Capture (Debezium, etc.)</h2>
+    <div class="not-prose">
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-border">
+          <thead>
+            <tr class="bg-muted/50">
+              <th class="px-4 py-3 text-left text-sm font-semibold">Feature</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">Panoptes</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold">CDC Solutions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border">
+            <tr>
+              <td class="px-4 py-3 text-sm">Application Context</td>
+              <td class="px-4 py-3 text-sm">✅ Full user & session info</td>
+              <td class="px-4 py-3 text-sm">❌ No application context</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Setup Complexity</td>
+              <td class="px-4 py-3 text-sm">✅ Simple wrapper</td>
+              <td class="px-4 py-3 text-sm">❌ Complex infrastructure</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Real-time Streaming</td>
+              <td class="px-4 py-3 text-sm">✅ Immediate via transports</td>
+              <td class="px-4 py-3 text-sm">✅ Transaction log streaming</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Database Support</td>
+              <td class="px-4 py-3 text-sm">✅ Any SQL database</td>
+              <td class="px-4 py-3 text-sm">⚠️ Specific databases only</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3 text-sm">Infrastructure</td>
+              <td class="px-4 py-3 text-sm">✅ Application-level only</td>
+              <td class="px-4 py-3 text-sm">❌ Additional services needed</td>
+            </tr>
+            <tr class="bg-muted/30">
+              <td class="px-4 py-3 text-sm">Operational Complexity</td>
+              <td class="px-4 py-3 text-sm">✅ Low</td>
+              <td class="px-4 py-3 text-sm">❌ High</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h2>Use Cases</h2>
+
+    <h3>When to Use Panoptes</h3>
+    <ul>
+      <li><strong>Compliance Requirements:</strong> Need to track who changed what data with full context</li>
+      <li><strong>Security Audits:</strong> Forensic analysis of data changes</li>
+      <li><strong>Data Recovery:</strong> Ability to see and restore previous states</li>
+      <li><strong>User Activity Tracking:</strong> Connect database changes to specific users and sessions</li>
+      <li><strong>Multi-tenant Applications:</strong> Track changes per tenant with full isolation</li>
+      <li><strong>Quick Implementation:</strong> Need audit trails without complex infrastructure</li>
+    </ul>
+
+    <h3>When to Consider Alternatives</h3>
+    <ul>
+      <li><strong>Database Triggers:</strong> If you only need basic audit logs and don't need application context</li>
+      <li><strong>Query Logging:</strong> For debugging query performance rather than data auditing</li>
+      <li><strong>CDC:</strong> When replicating data changes to other systems is the primary goal</li>
+      <li><strong>Custom Solution:</strong> If you need highly specialized audit logic beyond before/after capture</li>
+    </ul>
+
+    <h2>Performance Considerations</h2>
+    <p>
+      Panoptes adds overhead for before/after queries on UPDATE/DELETE operations. Consider these factors:
+    </p>
+    <ul>
+      <li><strong>Read-heavy workloads:</strong> Minimal impact (SELECT queries pass through)</li>
+      <li><strong>Bulk operations:</strong> Can use batch mode to reduce overhead</li>
+      <li><strong>High-frequency updates:</strong> May need selective auditing or async transports</li>
+      <li><strong>Critical operations:</strong> Can disable transports temporarily for performance-critical sections</li>
+    </ul>
+
+    <h2>Next Steps</h2>
+    <p>Ready to get started with Panoptes?</p>
+    <div class="not-prose mt-8 flex gap-4">
+      <a
+        href="/docs/getting-started"
+        class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+      >
+        Get Started →
+      </a>
+      <a
+        href="/docs/guides/installations"
+        class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground"
+      >
+        Installation Guide
+      </a>
+    </div>
+  </div>
+</DocsLayout>

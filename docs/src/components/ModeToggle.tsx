@@ -28,11 +28,10 @@ export function ModeToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-2 text-xs font-semibold text-white backdrop-blur transition hover:border-white/50 hover:bg-white/20 sm:px-4 sm:text-sm"
+      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--doc-border)] bg-[color:var(--doc-card)]/80 px-3 py-2 text-xs font-semibold text-[color:var(--doc-text)] backdrop-blur transition hover:border-[color:var(--doc-border)]/70 hover:bg-[color:var(--doc-card)] sm:px-4 sm:text-sm"
       aria-label="Toggle theme"
     >
       {dark ? <SunIcon /> : <MoonIcon />}
-      <span className="uppercase">{dark ? "Light" : "Dark"}</span>
     </button>
   );
 }

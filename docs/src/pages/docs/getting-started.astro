@@ -1,0 +1,152 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import { CodeBlock, InlineCode } from '../../components/ui/code-block';
+---
+
+<DocsLayout title="Getting Started - Panoptes SDK" description="Get started with Panoptes SDK">
+  <div class="prose dark:prose-invert max-w-none">
+    <h1>Getting Started with Panoptes SDK</h1>
+
+    <p class="lead text-xl text-muted-foreground">
+      Panoptes SDK is a powerful auditing solution that tracks every SQL query in your application with complete before/after data capture, user context, and flexible multi-destination event routing.
+    </p>
+
+    <h2>What is Panoptes?</h2>
+    <p>
+      Panoptes (named after the all-seeing giant from Greek mythology) is designed to be the <strong>vigilant guardian of your database operations</strong>. It provides:
+    </p>
+
+    <ul>
+      <li><strong>Complete Audit Trails:</strong> Automatically captures before and after states for UPDATE and DELETE operations</li>
+      <li><strong>Rich Context:</strong> Includes user information, IP addresses, roles, request IDs, and custom metadata with every event</li>
+      <li><strong>Multi-destination Support:</strong> Send audit events to multiple destinations (databases, message queues, cloud services, etc.)</li>
+      <li><strong>Zero Configuration:</strong> Simple wrapper pattern that works with your existing database clients</li>
+      <li><strong>Compliance Ready:</strong> Built for audits, forensics, regulatory compliance (GDPR, HIPAA, SOC2)</li>
+    </ul>
+
+    <h2>Why Use Panoptes?</h2>
+
+    <h3>Security & Compliance</h3>
+    <p>
+      Meet regulatory requirements by maintaining complete audit logs of who changed what data, when, and from where. Perfect for industries that need to demonstrate compliance with data protection regulations.
+    </p>
+
+    <h3>Forensics & Debugging</h3>
+    <p>
+      When something goes wrong, Panoptes gives you the complete story. See exactly what data changed, who made the change, and the full context around the operation.
+    </p>
+
+    <h3>Data Recovery</h3>
+    <p>
+      With before/after snapshots, you can reconstruct historical states of your data or implement point-in-time recovery strategies.
+    </p>
+
+    <h2>How It Works</h2>
+    <p>
+      Panoptes works by wrapping your existing database clients. Here's a simple example:
+    </p>
+
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes } from 'panoptes-sdk';
+import { Pool } from 'pg';
+
+// Create your database client
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL
+});
+
+// Wrap it with Panoptes
+const auditedPool = new Panoptes({
+  client: pool,
+  context: {
+    userId: 'user-123',
+    userEmail: 'john@example.com',
+    ipAddress: '192.168.1.1'
+  },
+  transports: [
+    // Send to audit database
+    auditDatabaseTransport,
+    // Send to message queue
+    kafkaTransport,
+  ]
+});
+
+// Use it like normal - Panoptes handles the rest
+await auditedPool.query(
+  'UPDATE users SET email = $1 WHERE id = $2',
+  ['newemail@example.com', 123]
+);`}
+    />
+
+    <p>
+      That's it! Every query now automatically:
+    </p>
+    <ul>
+      <li>Captures the before state (for UPDATE/DELETE)</li>
+      <li>Executes your query</li>
+      <li>Captures the after state</li>
+      <li>Generates a comprehensive audit event with all context</li>
+      <li>Sends the event to your configured destinations</li>
+    </ul>
+
+    <h2>Key Features</h2>
+
+    <h3>Automatic Before/After Capture</h3>
+    <p>
+      For <InlineCode client:load>UPDATE</InlineCode> and <InlineCode client:load>DELETE</InlineCode> operations, Panoptes automatically fetches the current state before executing the query, then captures the new state after. This gives you a complete diff of what changed.
+    </p>
+
+    <h3>Flexible Context</h3>
+    <p>
+      Add any context you need to your audit events:
+    </p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`const context = {
+  userId: req.user.id,
+  userName: req.user.name,
+  userRole: req.user.role,
+  ipAddress: req.ip,
+  requestId: req.id,
+  sessionId: req.session.id,
+  // Any custom metadata
+  customField: 'custom-value'
+};`}
+    />
+
+    <h3>Multiple Transports</h3>
+    <p>
+      Send your audit events wherever you need them:
+    </p>
+    <ul>
+      <li>Dedicated audit database</li>
+      <li>Message queues (Kafka, RabbitMQ, SQS)</li>
+      <li>Cloud services (S3, CloudWatch, BigQuery)</li>
+      <li>SIEM systems</li>
+      <li>Custom webhooks</li>
+    </ul>
+
+    <h2>Next Steps</h2>
+    <p>
+      Ready to get started? Check out our <a href="/docs/guides/installations">Installation Guide</a> for detailed setup instructions.
+    </p>
+
+    <div class="not-prose mt-8 flex gap-4">
+      <a
+        href="/docs/guides/installations"
+        class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+      >
+        Installation Guide →
+      </a>
+      <a
+        href="/docs/integrations"
+        class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground"
+      >
+        View Integrations
+      </a>
+    </div>
+  </div>
+</DocsLayout>

@@ -1,0 +1,354 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+import { CodeBlock, InlineCode } from '../../components/ui/code-block';
+---
+
+<DocsLayout title="Integrations - Panoptes SDK" description="Integrate Panoptes SDK with your stack">
+  <div class="prose dark:prose-invert max-w-none">
+    <h1>Integrations</h1>
+    <p class="lead text-xl text-muted-foreground">
+      Panoptes SDK integrates seamlessly with your existing stack. Send audit events to multiple destinations using transports.
+    </p>
+
+    <h2>What are Transports?</h2>
+    <p>
+      Transports define where your audit events are sent. You can configure multiple transports to send the same audit event to different destinations simultaneously - for example, both a dedicated audit database and a message queue for real-time processing.
+    </p>
+
+    <h2>Built-in Transports</h2>
+
+    <h3>PostgreSQL Transport</h3>
+    <p>Store audit events in a dedicated PostgreSQL database:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, PostgresTransport } from 'panoptes-sdk';
+import { Pool } from 'pg';
+
+const auditPool = new Pool({
+  connectionString: process.env.AUDIT_DATABASE_URL
+});
+
+const transport = new PostgresTransport({
+  pool: auditPool,
+  tableName: 'audit_events',
+  schema: 'audit',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  context: { /* ... */ },
+  transports: [transport],
+});`}
+    />
+
+    <h3>Console Transport</h3>
+    <p>Perfect for development and debugging:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, ConsoleTransport } from 'panoptes-sdk';
+
+const transport = new ConsoleTransport({
+  format: 'pretty', // or 'json'
+  logLevel: 'info',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h3>File Transport</h3>
+    <p>Write audit events to log files:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, FileTransport } from 'panoptes-sdk';
+
+const transport = new FileTransport({
+  directory: './logs/audit',
+  filename: 'audit-{date}.log',
+  maxFileSize: '100MB',
+  rotation: 'daily',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h2>Message Queue Integrations</h2>
+
+    <h3>Kafka</h3>
+    <p>Stream audit events to Apache Kafka:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, KafkaTransport } from 'panoptes-sdk';
+import { Kafka } from 'kafkajs';
+
+const kafka = new Kafka({
+  clientId: 'panoptes-audit',
+  brokers: ['kafka:9092'],
+});
+
+const transport = new KafkaTransport({
+  kafka,
+  topic: 'audit-events',
+  compression: 'gzip',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h3>RabbitMQ</h3>
+    <p>Publish audit events to RabbitMQ:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, RabbitMQTransport } from 'panoptes-sdk';
+
+const transport = new RabbitMQTransport({
+  url: 'amqp://localhost',
+  exchange: 'audit-events',
+  routingKey: 'audit.sql',
+  exchangeType: 'topic',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h3>AWS SQS</h3>
+    <p>Send events to Amazon Simple Queue Service:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, SQSTransport } from 'panoptes-sdk';
+import { SQSClient } from '@aws-sdk/client-sqs';
+
+const sqsClient = new SQSClient({ region: 'us-east-1' });
+
+const transport = new SQSTransport({
+  client: sqsClient,
+  queueUrl: process.env.AUDIT_QUEUE_URL,
+  messageGroupId: 'audit-events',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h2>Cloud Service Integrations</h2>
+
+    <h3>AWS CloudWatch</h3>
+    <p>Send audit logs to CloudWatch:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, CloudWatchTransport } from 'panoptes-sdk';
+import { CloudWatchLogsClient } from '@aws-sdk/client-cloudwatch-logs';
+
+const cloudwatch = new CloudWatchLogsClient({ region: 'us-east-1' });
+
+const transport = new CloudWatchTransport({
+  client: cloudwatch,
+  logGroupName: '/panoptes/audit',
+  logStreamName: 'sql-events',
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h3>Google Cloud Logging</h3>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, GCPLoggingTransport } from 'panoptes-sdk';
+import { Logging } from '@google-cloud/logging';
+
+const logging = new Logging({ projectId: 'your-project-id' });
+
+const transport = new GCPLoggingTransport({
+  logging,
+  logName: 'panoptes-audit',
+  resource: {
+    type: 'global',
+  },
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h3>AWS S3</h3>
+    <p>Archive audit events to S3:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes, S3Transport } from 'panoptes-sdk';
+import { S3Client } from '@aws-sdk/client-s3';
+
+const s3 = new S3Client({ region: 'us-east-1' });
+
+const transport = new S3Transport({
+  client: s3,
+  bucket: 'my-audit-bucket',
+  prefix: 'audit-events/',
+  batchSize: 100,
+  flushInterval: 60000, // 1 minute
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+});`}
+    />
+
+    <h2>Custom Transports</h2>
+    <p>Create your own transport by implementing the <InlineCode client:load>Transport</InlineCode> interface:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Transport, AuditEvent } from 'panoptes-sdk';
+
+class CustomTransport implements Transport {
+  async send(event: AuditEvent): Promise<void> {
+    // Your custom logic here
+    // For example, send to a webhook:
+    await fetch('https://api.example.com/audit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(event),
+    });
+  }
+
+  async flush?(): Promise<void> {
+    // Optional: flush any buffered events
+  }
+
+  async close?(): Promise<void> {
+    // Optional: cleanup resources
+  }
+}
+
+// Use it
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [new CustomTransport()],
+});`}
+    />
+
+    <h2>Multiple Transports</h2>
+    <p>Send audit events to multiple destinations simultaneously:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import {
+  Panoptes,
+  PostgresTransport,
+  KafkaTransport,
+  S3Transport
+} from 'panoptes-sdk';
+
+const db = new Panoptes({
+  client: yourDbClient,
+  context: { /* ... */ },
+  transports: [
+    // Store in audit database for querying
+    new PostgresTransport({ /* ... */ }),
+
+    // Stream to Kafka for real-time processing
+    new KafkaTransport({ /* ... */ }),
+
+    // Archive to S3 for long-term storage
+    new S3Transport({ /* ... */ }),
+  ],
+});
+
+// All three transports receive every audit event`}
+    />
+
+    <h2>Transport Configuration</h2>
+
+    <h3>Error Handling</h3>
+    <p>Configure how transport errors are handled:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`const db = new Panoptes({
+  client: yourDbClient,
+  transports: [transport],
+  transportOptions: {
+    // Fail the query if transport fails
+    failOnTransportError: false,
+
+    // Retry failed transports
+    retries: 3,
+    retryDelay: 1000,
+
+    // Log transport errors
+    onTransportError: (error, event) => {
+      console.error('Transport error:', error);
+      // Send to error tracking service
+      Sentry.captureException(error, { extra: { event } });
+    },
+  },
+});`}
+    />
+
+    <h3>Filtering Events</h3>
+    <p>Send only specific events to certain transports:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`const criticalTransport = new KafkaTransport({
+  topic: 'critical-audit-events',
+  filter: (event) => {
+    // Only send DELETE operations to this transport
+    return event.operation === 'DELETE';
+  },
+});
+
+const allEventsTransport = new PostgresTransport({
+  // No filter - receives all events
+});
+
+const db = new Panoptes({
+  client: yourDbClient,
+  transports: [criticalTransport, allEventsTransport],
+});`}
+    />
+
+    <h2>Next Steps</h2>
+    <div class="not-prose mt-8 flex gap-4">
+      <a
+        href="/docs/comparison"
+        class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+      >
+        See Comparisons →
+      </a>
+      <a
+        href="/docs/getting-started"
+        class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground"
+      >
+        ← Back to Getting Started
+      </a>
+    </div>
+  </div>
+</DocsLayout>

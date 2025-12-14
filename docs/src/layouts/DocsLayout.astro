@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+import '../styles/global.css';
+import { DocsHeader } from '../components/DocsHeader';
+import { DocsSidebar } from '../components/DocsSidebar';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = saved ? saved === 'dark' : prefersDark;
+      document.documentElement.classList.toggle('dark', isDark);
+    </script>
+  </head>
+  <body class="min-h-screen bg-[color:var(--doc-bg)] text-[color:var(--doc-text)]">
+    <div class="relative min-h-screen bg-[radial-gradient(circle_at_20%_20%,rgba(80,128,255,0.08),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(124,58,237,0.08),transparent_45%)]">
+      <DocsHeader client:load />
+      <div class="grid min-h-[calc(100vh-56px)] grid-cols-1 md:grid-cols-[260px_minmax(0,1fr)]">
+        <aside class="hidden md:block border-r border-[color:var(--doc-border)]">
+          <div class="sticky top-14 h-[calc(100vh-56px)] overflow-auto bg-[color:var(--doc-surface)]">
+            <DocsSidebar client:load />
+          </div>
+        </aside>
+        <main class="relative overflow-auto">
+          <div class="mx-auto w-full max-w-5xl p-6 md:p-8">
+            <div class="rounded-2xl border border-[color:var(--doc-border)] bg-[color:var(--doc-card)]/90 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur">
+              <slot />
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

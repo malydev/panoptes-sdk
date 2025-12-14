@@ -112,7 +112,7 @@ const HeroShell = () => {
 
             <div className="flex flex-wrap items-center gap-3 pt-4 sm:gap-4 sm:pt-6">
               <a
-                href="/docs"
+                href="/docs/getting-started"
                 className="group inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/30 bg-gradient-to-r from-cyan-500/20 via-white/5 to-purple-500/20 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 backdrop-blur transition hover:border-white/50 hover:from-cyan-400/30 hover:to-purple-400/30 hover:shadow-cyan-400/40 sm:px-6 sm:text-base lg:px-8 lg:py-4"
               >
                 <BookIcon />
@@ -120,7 +120,7 @@ const HeroShell = () => {
               </a>
 
               <a
-                href="/quick-start"
+                href="/docs/guides/installations"
                 className="group inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/30 bg-gradient-to-r from-emerald-400/25 via-cyan-400/20 to-blue-500/25 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-400/20 backdrop-blur-md transition-all hover:border-white/50 hover:-translate-y-0.5 hover:shadow-emerald-300/40 sm:px-6 sm:text-base lg:px-8 lg:py-4"
               >
                 <RayIcon />

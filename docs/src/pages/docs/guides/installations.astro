@@ -1,0 +1,278 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro';
+import { CodeBlock, InlineCode } from '../../../components/ui/code-block';
+---
+
+<DocsLayout title="Installations - Panoptes SDK" description="Installation guide for Panoptes SDK">
+  <div class="prose dark:prose-invert max-w-none">
+    <h1>Installation Guide</h1>
+    <p class="lead text-xl text-muted-foreground">
+      Get Panoptes SDK up and running in your project in just a few minutes.
+    </p>
+
+    <h2>Prerequisites</h2>
+    <p>Before installing Panoptes SDK, ensure you have:</p>
+    <ul>
+      <li><strong>Node.js 18 or higher</strong> - Check your version with <InlineCode client:load>node --version</InlineCode></li>
+      <li><strong>npm, yarn, or pnpm</strong> - Any modern package manager will work</li>
+      <li><strong>A supported database client</strong> - PostgreSQL (pg), MySQL (mysql2), or any SQL client</li>
+    </ul>
+
+    <h2>Installation</h2>
+    <p>Install Panoptes SDK using your preferred package manager:</p>
+
+    <h3>Using npm</h3>
+    <CodeBlock
+      client:load
+      language="bash"
+      code="npm install panoptes-sdk"
+    />
+
+    <h3>Using yarn</h3>
+    <CodeBlock
+      client:load
+      language="bash"
+      code="yarn add panoptes-sdk"
+    />
+
+    <h3>Using pnpm</h3>
+    <CodeBlock
+      client:load
+      language="bash"
+      code="pnpm add panoptes-sdk"
+    />
+
+    <h2>Basic Setup</h2>
+    <p>After installation, here's a basic setup example with PostgreSQL:</p>
+
+    <h3>1. Install your database driver</h3>
+    <CodeBlock
+      client:load
+      language="bash"
+      code="npm install pg"
+    />
+
+    <h3>2. Create your audited database client</h3>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes } from 'panoptes-sdk';
+import { Pool } from 'pg';
+
+// Create your regular database client
+const pool = new Pool({
+  host: 'localhost',
+  port: 5432,
+  database: 'myapp',
+  user: 'myuser',
+  password: 'mypassword',
+});
+
+// Wrap it with Panoptes
+const auditedPool = new Panoptes({
+  client: pool,
+  context: {
+    // Add default context for all queries
+    appName: 'my-application',
+    environment: process.env.NODE_ENV,
+  },
+  transports: [
+    // Configure where audit events should go
+    // We'll cover transports in the Integrations section
+  ],
+});
+
+export default auditedPool;`}
+    />
+
+    <h3>3. Use it in your application</h3>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import auditedPool from './db';
+
+// Use it exactly like your regular database client
+async function updateUser(userId: number, email: string) {
+  const result = await auditedPool.query(
+    'UPDATE users SET email = $1 WHERE id = $2',
+    [email, userId]
+  );
+  return result;
+}
+
+// Panoptes automatically:
+// 1. Captures the current user data (before state)
+// 2. Executes the UPDATE
+// 3. Captures the new user data (after state)
+// 4. Sends a complete audit event to your configured transports`}
+    />
+
+    <h2>Framework-Specific Setup</h2>
+
+    <h3>Express.js</h3>
+    <p>Add user context from Express middleware:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import express from 'express';
+import { Panoptes } from 'panoptes-sdk';
+import pool from './db-pool';
+
+const app = express();
+
+// Middleware to create request-scoped audited client
+app.use((req, res, next) => {
+  req.db = new Panoptes({
+    client: pool,
+    context: {
+      userId: req.user?.id,
+      userEmail: req.user?.email,
+      ipAddress: req.ip,
+      requestId: req.id,
+      userAgent: req.get('user-agent'),
+    },
+  });
+  next();
+});
+
+// Now use req.db in your routes
+app.put('/users/:id', async (req, res) => {
+  await req.db.query(
+    'UPDATE users SET name = $1 WHERE id = $2',
+    [req.body.name, req.params.id]
+  );
+  res.json({ success: true });
+});`}
+    />
+
+    <h3>Next.js</h3>
+    <p>Use Panoptes in API routes:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`// app/api/users/[id]/route.ts
+import { Panoptes } from 'panoptes-sdk';
+import { pool } from '@/lib/db';
+import { NextRequest } from 'next/server';
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const session = await getServerSession();
+  const body = await request.json();
+
+  const db = new Panoptes({
+    client: pool,
+    context: {
+      userId: session?.user?.id,
+      userEmail: session?.user?.email,
+      ipAddress: request.headers.get('x-forwarded-for'),
+    },
+  });
+
+  await db.query(
+    'UPDATE users SET name = $1 WHERE id = $2',
+    [body.name, params.id]
+  );
+
+  return Response.json({ success: true });
+}`}
+    />
+
+    <h3>NestJS</h3>
+    <p>Create a custom provider:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`// database.provider.ts
+import { Scope, Injectable } from '@nestjs/common';
+import { Panoptes } from 'panoptes-sdk';
+import { REQUEST } from '@nestjs/core';
+import { Request } from 'express';
+
+@Injectable({ scope: Scope.REQUEST })
+export class DatabaseService {
+  private db: Panoptes;
+
+  constructor(@Inject(REQUEST) private request: Request) {
+    this.db = new Panoptes({
+      client: pool,
+      context: {
+        userId: request.user?.id,
+        ipAddress: request.ip,
+      },
+    });
+  }
+
+  query(...args) {
+    return this.db.query(...args);
+  }
+}`}
+    />
+
+    <h2>Environment Variables</h2>
+    <p>Create a <InlineCode client:load>.env</InlineCode> file for your configuration:</p>
+    <CodeBlock
+      client:load
+      language="bash"
+      code={`# Database Configuration
+DATABASE_URL=postgresql://user:password@localhost:5432/myapp
+
+# Audit Configuration (optional)
+AUDIT_DATABASE_URL=postgresql://user:password@localhost:5432/audit_db
+AUDIT_ENABLED=true
+AUDIT_LOG_LEVEL=info`}
+    />
+
+    <h2>TypeScript Configuration</h2>
+    <p>Panoptes is written in TypeScript and includes type definitions. Make sure your <InlineCode client:load>tsconfig.json</InlineCode> includes:</p>
+    <CodeBlock
+      client:load
+      language="json"
+      code={`{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "esModuleInterop": true,
+    "strict": true
+  }
+}`}
+    />
+
+    <h2>Verification</h2>
+    <p>Test your installation with a simple query:</p>
+    <CodeBlock
+      client:load
+      language="typescript"
+      code={`import { Panoptes } from 'panoptes-sdk';
+
+// Create a test client
+const db = new Panoptes({
+  client: yourDatabaseClient,
+  context: { test: true },
+});
+
+// Run a simple query
+const result = await db.query('SELECT NOW()');
+console.log('Panoptes is working!', result.rows);`}
+    />
+
+    <h2>Next Steps</h2>
+    <div class="not-prose mt-8 flex gap-4">
+      <a
+        href="/docs/integrations"
+        class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
+      >
+        Configure Transports →
+      </a>
+      <a
+        href="/docs/getting-started"
+        class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground"
+      >
+        ← Back to Getting Started
+      </a>
+    </div>
+  </div>
+</DocsLayout>
