@@ -1,6 +1,6 @@
 {
 	"name": "panoptes-sdk",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Panoptes SQL auditing SDK for Node.js with multi-database support, before/after data capture, and database transport",
 	"author": "malydev",
 	"license": "MIT",
