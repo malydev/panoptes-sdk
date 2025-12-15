@@ -28,7 +28,7 @@ export function ModeToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="inline-flex items-center gap-2 rounded-full border border-[color:var(--doc-border)] bg-[color:var(--doc-card)]/80 px-3 py-2 text-xs font-semibold text-[color:var(--doc-text)] backdrop-blur transition hover:border-[color:var(--doc-border)]/70 hover:bg-[color:var(--doc-card)] sm:px-4 sm:text-sm"
+      className="inline-flex items-center gap-2 rounded-full border border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/80 px-3 py-2 text-xs font-semibold text-slate-900 dark:text-slate-200 backdrop-blur transition hover:border-slate-200/60 dark:border-slate-700/50/70 hover:bg-white dark:bg-gray-900 sm:px-4 sm:text-sm"
       aria-label="Toggle theme"
     >
       {dark ? <SunIcon /> : <MoonIcon />}
