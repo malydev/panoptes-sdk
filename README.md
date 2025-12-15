@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
-[![npm version](https://img.shields.io/npm/v/@panoptes/sdk.svg)](https://www.npmjs.com/package/@panoptes/sdk)
+[![npm version](https://img.shields.io/npm/v/@panoptes/sdk.svg)](https://www.npmjs.com/package/panoptes-sdk)
 
 > Automatically audit all SQL queries with rich context, flexible rules, and zero configuration. A modern alternative to database triggers.
 
@@ -13,11 +13,11 @@
 ## 🚀 Quick Start
 
 ```bash
-npm install @panoptes/sdk
+npm install panoptes/sdk
 ```
 
 ```javascript
-import { initAudit, createAuditedPostgresClient } from '@panoptes/sdk';
+import { initAudit, createAuditedPostgresClient } from 'panoptes/sdk';
 
 initAudit({
   appName: 'my-app',
@@ -124,7 +124,7 @@ If you find this project useful, consider:
 
 ## 🔗 Links
 
-- 📦 [npm Package](https://www.npmjs.com/package/@panoptes/sdk)
+- 📦 [npm Package](https://www.npmjs.com/package/panoptes-sdk)
 - 📚 [Documentation](./docs)
 - 🐛 [Issue Tracker](https://github.com/malydev/panoptes-sdk/issues)
 - 💬 [Discussions](https://github.com/malydev/panoptes-sdk/discussions)
