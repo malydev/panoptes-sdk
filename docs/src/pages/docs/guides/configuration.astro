@@ -1,12 +1,21 @@
 ---
-import DocsLayout from '../../../layouts/DocsLayout.astro';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../../components/ui/card';
-import { CodeBlock, InlineCode } from '../../../components/ui/code-block';
-import { Badge } from '../../../components/ui/badge';
-import { Separator } from '../../../components/ui/separator';
+import DocsLayout from "@/layouts/DocsLayout.astro";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { CodeBlock, InlineCode } from "@/components/ui/code-block";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 ---
 
-<DocsLayout title="Configuration - Panoptes SDK" description="Complete configuration guide for Panoptes SDK">
+<DocsLayout
+  title="Configuration - Panoptes SDK"
+  description="Complete configuration guide for Panoptes SDK"
+>
   <div class="space-y-10">
     <div class="mb-8">
       <h1 class="text-4xl font-bold tracking-tight mb-4">
@@ -14,8 +23,14 @@ import { Separator } from '../../../components/ui/separator';
         <span class="lang-es">Guía de Configuración</span>
       </h1>
       <p class="text-xl text-slate-600 dark:text-slate-400">
-        <span class="lang-en">Learn how to configure Panoptes SDK to fit your application's needs. From basic setup to advanced options.</span>
-        <span class="lang-es">Aprende cómo configurar Panoptes SDK para adaptarse a las necesidades de tu aplicación. Desde configuración básica hasta opciones avanzadas.</span>
+        <span class="lang-en"
+          >Learn how to configure Panoptes SDK to fit your application's needs.
+          From basic setup to advanced options.</span
+        >
+        <span class="lang-es"
+          >Aprende cómo configurar Panoptes SDK para adaptarse a las necesidades
+          de tu aplicación. Desde configuración básica hasta opciones avanzadas.</span
+        >
       </p>
     </div>
 
@@ -28,19 +43,33 @@ import { Separator } from '../../../components/ui/separator';
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">The <InlineCode client:load>initAudit()</InlineCode> function initializes the Panoptes SDK and must be called once at application startup. It configures how audit events are captured and where they're sent.</span>
-        <span class="lang-es">La función <InlineCode client:load>initAudit()</InlineCode> inicializa el SDK de Panoptes y debe ser llamada una vez al inicio de la aplicación. Configura cómo se capturan los eventos de auditoría y dónde se envían.</span>
+        <span class="lang-en"
+          >The <InlineCode client:load>initAudit()</InlineCode> function initializes
+          the Panoptes SDK and must be called once at application startup. It configures
+          how audit events are captured and where they're sent.</span
+        >
+        <span class="lang-es"
+          >La función <InlineCode client:load>initAudit()</InlineCode> inicializa
+          el SDK de Panoptes y debe ser llamada una vez al inicio de la aplicación.
+          Configura cómo se capturan los eventos de auditoría y dónde se envían.</span
+        >
       </p>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Basic Configuration</span>
             <span class="lang-es">Configuración Básica</span>
           </CardTitle>
           <CardDescription>
-            <span class="lang-en">Minimum required configuration to get started</span>
-            <span class="lang-es">Configuración mínima requerida para comenzar</span>
+            <span class="lang-en"
+              >Minimum required configuration to get started</span
+            >
+            <span class="lang-es"
+              >Configuración mínima requerida para comenzar</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -60,7 +89,9 @@ initAudit({
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Complete Configuration</span>
@@ -68,7 +99,9 @@ initAudit({
           </CardTitle>
           <CardDescription>
             <span class="lang-en">All available options with descriptions</span>
-            <span class="lang-es">Todas las opciones disponibles con descripciones</span>
+            <span class="lang-es"
+              >Todas las opciones disponibles con descripciones</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -156,7 +189,6 @@ initAudit({
 
     <Separator client:load className="my-8" />
 
-    <!-- Configuration by Environment -->
     <div class="space-y-6">
       <h2 class="text-2xl font-bold">
         <span class="lang-en">Configuration by Environment</span>
@@ -164,11 +196,17 @@ initAudit({
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">Different environments typically require different configurations. Here are recommended setups for each environment.</span>
-        <span class="lang-es">Diferentes ambientes típicamente requieren diferentes configuraciones. Aquí están las configuraciones recomendadas para cada ambiente.</span>
+        <span class="lang-en"
+          >Different environments typically require different configurations.
+          Here are recommended setups for each environment.</span
+        >
+        <span class="lang-es"
+          >Diferentes ambientes típicamente requieren diferentes
+          configuraciones. Aquí están las configuraciones recomendadas para cada
+          ambiente.</span
+        >
       </p>
 
-      <!-- Development -->
       <div class="space-y-3">
         <div class="flex items-center gap-3">
           <Badge client:load variant="secondary">Development</Badge>
@@ -178,8 +216,12 @@ initAudit({
           </h3>
         </div>
         <p class="text-sm text-slate-600 dark:text-slate-400">
-          <span class="lang-en">Console output with pretty printing for easy debugging</span>
-          <span class="lang-es">Salida de consola con formato para fácil depuración</span>
+          <span class="lang-en"
+            >Console output with pretty printing for easy debugging</span
+          >
+          <span class="lang-es"
+            >Salida de consola con formato para fácil depuración</span
+          >
         </p>
         <CodeBlock
           client:load
@@ -201,7 +243,6 @@ initAudit({
 
       <Separator client:load className="my-6" />
 
-      <!-- Staging -->
       <div class="space-y-3">
         <div class="flex items-center gap-3">
           <Badge client:load variant="secondary">Staging</Badge>
@@ -211,8 +252,12 @@ initAudit({
           </h3>
         </div>
         <p class="text-sm text-slate-600 dark:text-slate-400">
-          <span class="lang-en">Console + file logging for testing before production</span>
-          <span class="lang-es">Consola + archivo para probar antes de producción</span>
+          <span class="lang-en"
+            >Console + file logging for testing before production</span
+          >
+          <span class="lang-es"
+            >Consola + archivo para probar antes de producción</span
+          >
         </p>
         <CodeBlock
           client:load
@@ -234,7 +279,6 @@ initAudit({
 
       <Separator client:load className="my-6" />
 
-      <!-- Production -->
       <div class="space-y-3">
         <div class="flex items-center gap-3">
           <Badge client:load variant="default">Production</Badge>
@@ -244,8 +288,11 @@ initAudit({
           </h3>
         </div>
         <p class="text-sm text-slate-600 dark:text-slate-400">
-          <span class="lang-en">Database + SIEM integration for compliance</span>
-          <span class="lang-es">Base de datos + integración SIEM para cumplimiento</span>
+          <span class="lang-en">Database + SIEM integration for compliance</span
+          >
+          <span class="lang-es"
+            >Base de datos + integración SIEM para cumplimiento</span
+          >
         </p>
         <CodeBlock
           client:load
@@ -279,7 +326,6 @@ initAudit({
 
     <Separator client:load className="my-8" />
 
-    <!-- User Context Configuration -->
     <div class="space-y-6">
       <h2 class="text-2xl font-bold">
         <span class="lang-en">User Context: </span>
@@ -288,11 +334,20 @@ initAudit({
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">User context provides crucial information about who is performing database operations. This should be set for each request or session.</span>
-        <span class="lang-es">El contexto de usuario proporciona información crucial sobre quién está realizando operaciones en la base de datos. Esto debe establecerse para cada petición o sesión.</span>
+        <span class="lang-en"
+          >User context provides crucial information about who is performing
+          database operations. This should be set for each request or session.</span
+        >
+        <span class="lang-es"
+          >El contexto de usuario proporciona información crucial sobre quién
+          está realizando operaciones en la base de datos. Esto debe
+          establecerse para cada petición o sesión.</span
+        >
       </p>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Complete User Context</span>
@@ -300,7 +355,9 @@ initAudit({
           </CardTitle>
           <CardDescription>
             <span class="lang-en">All available user context fields</span>
-            <span class="lang-es">Todos los campos de contexto de usuario disponibles</span>
+            <span class="lang-es"
+              >Todos los campos de contexto de usuario disponibles</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -338,17 +395,29 @@ setUserContext({
         </CardContent>
       </Card>
 
-      <Card className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5">
+      <Card
+        className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5"
+      >
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
             </svg>
             <span class="lang-en">Integration with Web Frameworks</span>
             <span class="lang-es">Integración con Frameworks Web</span>
           </CardTitle>
         </CardHeader>
-        <CardContent class="space-y-4">
+        <CardContent className="space-y-4">
           <div>
             <h4 class="font-semibold mb-2">Express.js</h4>
             <CodeBlock
@@ -439,11 +508,19 @@ fastify.addHook('onRequest', async (request, reply) => {
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">Configure which tables and operations to audit. By default, Panoptes audits all operations on all tables.</span>
-        <span class="lang-es">Configura qué tablas y operaciones auditar. Por defecto, Panoptes audita todas las operaciones en todas las tablas.</span>
+        <span class="lang-en"
+          >Configure which tables and operations to audit. By default, Panoptes
+          audits all operations on all tables.</span
+        >
+        <span class="lang-es"
+          >Configura qué tablas y operaciones auditar. Por defecto, Panoptes
+          audita todas las operaciones en todas las tablas.</span
+        >
       </p>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Table-based Filtering</span>
@@ -471,7 +548,9 @@ fastify.addHook('onRequest', async (request, reply) => {
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Operation-based Filtering</span>
@@ -497,7 +576,9 @@ fastify.addHook('onRequest', async (request, reply) => {
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Custom Filter Function</span>
@@ -505,7 +586,9 @@ fastify.addHook('onRequest', async (request, reply) => {
           </CardTitle>
           <CardDescription>
             <span class="lang-en">Advanced filtering with custom logic</span>
-            <span class="lang-es">Filtrado avanzado con lógica personalizada</span>
+            <span class="lang-es"
+              >Filtrado avanzado con lógica personalizada</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -547,11 +630,23 @@ fastify.addHook('onRequest', async (request, reply) => {
         </CardContent>
       </Card>
 
-      <Card className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5">
+      <Card
+        className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5"
+      >
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              ></path>
             </svg>
             <span class="lang-en">Best Practices for Filtering</span>
             <span class="lang-es">Mejores Prácticas para Filtrado</span>
@@ -560,32 +655,92 @@ fastify.addHook('onRequest', async (request, reply) => {
         <CardContent>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="lang-en"><strong>Start broad, then narrow:</strong> Begin by auditing everything, then exclude as needed</span>
-              <span class="lang-es"><strong>Empieza amplio, luego reduce:</strong> Comienza auditando todo, luego excluye según necesites</span>
+              <span class="lang-en"
+                ><strong>Start broad, then narrow:</strong> Begin by auditing everything,
+                then exclude as needed</span
+              >
+              <span class="lang-es"
+                ><strong>Empieza amplio, luego reduce:</strong> Comienza auditando
+                todo, luego excluye según necesites</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="lang-en"><strong>Skip high-volume tables:</strong> Exclude logs, sessions, and cache tables</span>
-              <span class="lang-es"><strong>Omite tablas de alto volumen:</strong> Excluye logs, sesiones y tablas de caché</span>
+              <span class="lang-en"
+                ><strong>Skip high-volume tables:</strong> Exclude logs, sessions,
+                and cache tables</span
+              >
+              <span class="lang-es"
+                ><strong>Omite tablas de alto volumen:</strong> Excluye logs, sesiones
+                y tablas de caché</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="lang-en"><strong>Focus on sensitive data:</strong> Always audit PII, financial, and authentication tables</span>
-              <span class="lang-es"><strong>Enfócate en datos sensibles:</strong> Siempre audita PII, financieros y tablas de autenticación</span>
+              <span class="lang-en"
+                ><strong>Focus on sensitive data:</strong> Always audit PII, financial,
+                and authentication tables</span
+              >
+              <span class="lang-es"
+                ><strong>Enfócate en datos sensibles:</strong> Siempre audita PII,
+                financieros y tablas de autenticación</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
-              <span class="lang-en"><strong>Consider performance:</strong> Filtering reduces storage and processing costs</span>
-              <span class="lang-es"><strong>Considera el rendimiento:</strong> El filtrado reduce costos de almacenamiento y procesamiento</span>
+              <span class="lang-en"
+                ><strong>Consider performance:</strong> Filtering reduces storage
+                and processing costs</span
+              >
+              <span class="lang-es"
+                ><strong>Considera el rendimiento:</strong> El filtrado reduce costos
+                de almacenamiento y procesamiento</span
+              >
             </li>
           </ul>
         </CardContent>
@@ -594,7 +749,6 @@ fastify.addHook('onRequest', async (request, reply) => {
 
     <Separator client:load className="my-8" />
 
-    <!-- Environment Variables -->
     <div class="space-y-6">
       <h2 class="text-2xl font-bold">
         <span class="lang-en">Environment Variables</span>
@@ -602,11 +756,19 @@ fastify.addHook('onRequest', async (request, reply) => {
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">For security and flexibility, use environment variables for sensitive configuration values.</span>
-        <span class="lang-es">Por seguridad y flexibilidad, usa variables de entorno para valores de configuración sensibles.</span>
+        <span class="lang-en"
+          >For security and flexibility, use environment variables for sensitive
+          configuration values.</span
+        >
+        <span class="lang-es"
+          >Por seguridad y flexibilidad, usa variables de entorno para valores
+          de configuración sensibles.</span
+        >
       </p>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Recommended .env Configuration</span>
@@ -647,7 +809,9 @@ PANOPTES_AUTO_CREATE_TABLE=true`}
         </CardContent>
       </Card>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Using Environment Variables in Code</span>
@@ -706,22 +870,27 @@ initAudit({
 
     <Separator client:load className="my-8" />
 
-    <!-- Performance Configuration -->
     <div class="space-y-6">
       <h2 class="text-2xl font-bold">
         <span class="lang-en">Performance Optimization</span>
         <span class="lang-es">Optimización de Rendimiento</span>
       </h2>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Async Mode & Buffering</span>
             <span class="lang-es">Modo Async y Buffering</span>
           </CardTitle>
           <CardDescription>
-            <span class="lang-en">Recommended for high-throughput applications</span>
-            <span class="lang-es">Recomendado para aplicaciones de alto rendimiento</span>
+            <span class="lang-en"
+              >Recommended for high-throughput applications</span
+            >
+            <span class="lang-es"
+              >Recomendado para aplicaciones de alto rendimiento</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -750,24 +919,51 @@ initAudit({
   }
 });`}
           />
-          <div class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
-            <p><strong class="text-slate-900 dark:text-slate-200">
-              <span class="lang-en">asyncMode:</span>
-              <span class="lang-es">asyncMode:</span>
-            </strong> <span class="lang-en">Processes audits in background, doesn't block your queries</span><span class="lang-es">Procesa auditorías en segundo plano, no bloquea tus consultas</span></p>
-            <p><strong class="text-slate-900 dark:text-slate-200">
-              <span class="lang-en">bufferSize:</span>
-              <span class="lang-es">bufferSize:</span>
-            </strong> <span class="lang-en">Number of events to buffer before processing (higher = better performance)</span><span class="lang-es">Número de eventos a bufferear antes de procesar (mayor = mejor rendimiento)</span></p>
+          <div
+            class="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-400"
+          >
+            <p>
+              <strong class="text-slate-900 dark:text-slate-200">
+                <span class="lang-en">asyncMode:</span>
+                <span class="lang-es">asyncMode:</span>
+              </strong>
+              <span class="lang-en"
+                >Processes audits in background, doesn't block your queries</span
+              ><span class="lang-es"
+                >Procesa auditorías en segundo plano, no bloquea tus consultas</span>
+            </p>
+            <p>
+              <strong class="text-slate-900 dark:text-slate-200">
+                <span class="lang-en">bufferSize:</span>
+                <span class="lang-es">bufferSize:</span>
+              </strong>
+              <span class="lang-en"
+                >Number of events to buffer before processing (higher = better
+                performance)</span
+              ><span class="lang-es"
+                >Número de eventos a bufferear antes de procesar (mayor = mejor
+                rendimiento)</span>
+            </p>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5">
+      <Card
+        className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5"
+      >
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
             <span class="lang-en">Performance Tips</span>
             <span class="lang-es">Consejos de Rendimiento</span>
@@ -776,29 +972,63 @@ initAudit({
         <CardContent>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start gap-2">
-              <span class="text-indigo-500 dark:text-violet-400 font-bold">1.</span>
-              <span class="lang-en"><strong>Use async mode</strong> in production (default: true)</span>
-              <span class="lang-es"><strong>Usa modo async</strong> en producción (default: true)</span>
+              <span class="text-indigo-500 dark:text-violet-400 font-bold"
+                >1.</span
+              >
+              <span class="lang-en"
+                ><strong>Use async mode</strong> in production (default: true)</span
+              >
+              <span class="lang-es"
+                ><strong>Usa modo async</strong> en producción (default: true)</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-indigo-500 dark:text-violet-400 font-bold">2.</span>
-              <span class="lang-en"><strong>Increase buffer size</strong> for high-volume apps (500-1000)</span>
-              <span class="lang-es"><strong>Aumenta el buffer</strong> para apps de alto volumen (500-1000)</span>
+              <span class="text-indigo-500 dark:text-violet-400 font-bold"
+                >2.</span
+              >
+              <span class="lang-en"
+                ><strong>Increase buffer size</strong> for high-volume apps (500-1000)</span
+              >
+              <span class="lang-es"
+                ><strong>Aumenta el buffer</strong> para apps de alto volumen (500-1000)</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-indigo-500 dark:text-violet-400 font-bold">3.</span>
-              <span class="lang-en"><strong>Skip before state</strong> if you don't need it (saves DB reads)</span>
-              <span class="lang-es"><strong>Omite estado anterior</strong> si no lo necesitas (ahorra lecturas BD)</span>
+              <span class="text-indigo-500 dark:text-violet-400 font-bold"
+                >3.</span
+              >
+              <span class="lang-en"
+                ><strong>Skip before state</strong> if you don't need it (saves DB
+                reads)</span
+              >
+              <span class="lang-es"
+                ><strong>Omite estado anterior</strong> si no lo necesitas (ahorra
+                lecturas BD)</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-indigo-500 dark:text-violet-400 font-bold">4.</span>
-              <span class="lang-en"><strong>Filter aggressively</strong> - only audit what you need</span>
-              <span class="lang-es"><strong>Filtra agresivamente</strong> - solo audita lo necesario</span>
+              <span class="text-indigo-500 dark:text-violet-400 font-bold"
+                >4.</span
+              >
+              <span class="lang-en"
+                ><strong>Filter aggressively</strong> - only audit what you need</span
+              >
+              <span class="lang-es"
+                ><strong>Filtra agresivamente</strong> - solo audita lo necesario</span
+              >
             </li>
             <li class="flex items-start gap-2">
-              <span class="text-indigo-500 dark:text-violet-400 font-bold">5.</span>
-              <span class="lang-en"><strong>Use separate audit DB</strong> - don't store audits in your app database</span>
-              <span class="lang-es"><strong>Usa BD de auditoría separada</strong> - no almacenes auditorías en tu BD de app</span>
+              <span class="text-indigo-500 dark:text-violet-400 font-bold"
+                >5.</span
+              >
+              <span class="lang-en"
+                ><strong>Use separate audit DB</strong> - don't store audits in your
+                app database</span
+              >
+              <span class="lang-es"
+                ><strong>Usa BD de auditoría separada</strong> - no almacenes auditorías
+                en tu BD de app</span
+              >
             </li>
           </ul>
         </CardContent>
@@ -807,30 +1037,51 @@ initAudit({
 
     <Separator client:load className="my-8" />
 
-    <!-- Next Steps -->
     <div class="mb-10">
       <h2 class="text-3xl font-bold mb-4">
         <span class="lang-en">Next Steps</span>
         <span class="lang-es">Próximos Pasos</span>
       </h2>
       <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
-        <span class="lang-en">Now that you know how to configure Panoptes, continue to Integrations to learn about transports and external systems.</span>
-        <span class="lang-es">Ahora que sabes cómo configurar Panoptes, continúa a Integraciones para aprender sobre transportes y sistemas externos.</span>
+        <span class="lang-en"
+          >Now that you know how to configure Panoptes, continue to Integrations
+          to learn about transports and external systems.</span
+        >
+        <span class="lang-es"
+          >Ahora que sabes cómo configurar Panoptes, continúa a Integraciones
+          para aprender sobre transportes y sistemas externos.</span
+        >
       </p>
 
       <a href="/docs/integrations" class="block">
-        <Card client:load className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer">
+        <Card
+          client:load
+          className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer"
+        >
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
               <span class="lang-en">Continue to Integrations</span>
               <span class="lang-es">Continuar a Integraciones</span>
             </CardTitle>
             <CardDescription>
-              <span class="lang-en">Learn about all available transports and integrations</span>
-              <span class="lang-es">Aprende sobre todos los transportes e integraciones disponibles</span>
+              <span class="lang-en"
+                >Learn about all available transports and integrations</span
+              >
+              <span class="lang-es"
+                >Aprende sobre todos los transportes e integraciones disponibles</span
+              >
             </CardDescription>
           </CardHeader>
         </Card>

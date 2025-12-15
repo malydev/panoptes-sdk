@@ -1,25 +1,39 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
-import { Separator } from '../../components/ui/separator';
-import { Badge } from '../../components/ui/badge';
+import DocsLayout from "@/layouts/DocsLayout.astro";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 ---
 
-<DocsLayout title="Comparison - Panoptes SDK" description="Compare Panoptes SDK with other solutions">
+<DocsLayout
+  title="Comparison - Panoptes SDK"
+  description="Compare Panoptes SDK with other solutions"
+>
   <div class="space-y-10">
-    <!-- Hero Section -->
     <div class="mb-8">
       <h1 class="text-4xl font-bold tracking-tight mb-4">
         <span class="lang-en">Panoptes vs Alternatives</span>
         <span class="lang-es">Panoptes vs Alternativas</span>
       </h1>
       <p class="text-xl text-slate-600 dark:text-slate-400">
-        <span class="lang-en">Panoptes focuses on SQL audit trails with before/after capture, rich context, and multiple transports. See how it compares to common approaches.</span>
-        <span class="lang-es">Panoptes se centra en rastros de auditoría SQL con captura before/after, contexto rico y múltiples transportes. Mira cómo se compara con enfoques comunes.</span>
+        <span class="lang-en"
+          >Panoptes focuses on SQL audit trails with before/after capture, rich
+          context, and multiple transports. See how it compares to common
+          approaches.</span
+        >
+        <span class="lang-es"
+          >Panoptes se centra en rastros de auditoría SQL con captura
+          before/after, contexto rico y múltiples transportes. Mira cómo se
+          compara con enfoques comunes.</span
+        >
       </p>
     </div>
 
-    <!-- Comparison Cards -->
     <div class="space-y-6">
       <div>
         <h2 class="text-2xl font-bold mb-2">
@@ -27,19 +41,36 @@ import { Badge } from '../../components/ui/badge';
           <span class="lang-es">Comparación de Características</span>
         </h2>
         <p class="text-slate-600 dark:text-slate-400">
-          <span class="lang-en">How Panoptes stacks up against traditional audit approaches</span>
-          <span class="lang-es">Cómo se compara Panoptes con enfoques tradicionales de auditoría</span>
+          <span class="lang-en"
+            >How Panoptes stacks up against traditional audit approaches</span
+          >
+          <span class="lang-es"
+            >Cómo se compara Panoptes con enfoques tradicionales de auditoría</span
+          >
         </p>
       </div>
 
       <div class="grid gap-6 md:grid-cols-2">
-        <!-- Database Triggers -->
-        <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all">
+        <Card
+          className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all"
+        >
           <CardHeader>
             <div class="flex items-center gap-3 mb-2">
-              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-                <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+              <div
+                class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                  ></path>
                 </svg>
               </div>
               <CardTitle className="text-lg">
@@ -48,69 +79,163 @@ import { Badge } from '../../components/ui/badge';
               </CardTitle>
             </div>
             <CardDescription>
-              <span class="lang-en">Traditional database-level auditing approach</span>
-              <span class="lang-es">Enfoque tradicional de auditoría a nivel de base de datos</span>
+              <span class="lang-en"
+                >Traditional database-level auditing approach</span
+              >
+              <span class="lang-es"
+                >Enfoque tradicional de auditoría a nivel de base de datos</span
+              >
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div class="space-y-2 text-sm">
-              <p><strong class="text-slate-900 dark:text-slate-200">Panoptes:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">App-level context (user, IP, request), multiple destinations, works on any SQL DB.</span><span class="lang-es">Contexto de app (usuario, IP, request), múltiples destinos, funciona en cualquier SQL.</span></span></p>
-              <p><strong class="text-slate-900 dark:text-slate-200">Triggers:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">DB-only context, same-database storage, vendor-specific DDL.</span><span class="lang-es">Contexto solo de BD, almacenamiento en la misma BD, DDL específico de proveedor.</span></span></p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Panoptes:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >App-level context (user, IP, request), multiple
+                    destinations, works on any SQL DB.</span
+                  ><span class="lang-es"
+                    >Contexto de app (usuario, IP, request), múltiples destinos,
+                    funciona en cualquier SQL.</span
+                  ></span>
+              </p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Triggers:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >DB-only context, same-database storage, vendor-specific
+                    DDL.</span
+                  ><span class="lang-es"
+                    >Contexto solo de BD, almacenamiento en la misma BD, DDL
+                    específico de proveedor.</span
+                  ></span>
+              </p>
             </div>
 
             <Separator client:load />
 
             <div class="grid grid-cols-2 gap-3">
-              <div class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2">
+              <div
+                class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2"
+                >
                   Panoptes
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Before/after snapshots</span>
                     <span class="lang-es">Snapshots antes/después</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">No DB vendor lock</span>
                     <span class="lang-es">Sin lock de proveedor</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Multiple transports</span>
                     <span class="lang-es">Múltiples transportes</span>
                   </li>
                 </ul>
               </div>
-              <div class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2">
+              <div
+                class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2"
+                >
                   Triggers
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">DB coupling</span>
                     <span class="lang-es">Acoplamiento a BD</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">DDL per table</span>
                     <span class="lang-es">DDL por tabla</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">No app context</span>
                     <span class="lang-es">Sin contexto app</span>
@@ -121,13 +246,26 @@ import { Badge } from '../../components/ui/badge';
           </CardContent>
         </Card>
 
-        <!-- Application Logging -->
-        <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all">
+        <Card
+          className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all"
+        >
           <CardHeader>
             <div class="flex items-center gap-3 mb-2">
-              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-                <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              <div
+                class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
                 </svg>
               </div>
               <CardTitle className="text-lg">
@@ -136,69 +274,163 @@ import { Badge } from '../../components/ui/badge';
               </CardTitle>
             </div>
             <CardDescription>
-              <span class="lang-en">Manual logging implemented in application code</span>
-              <span class="lang-es">Logging manual implementado en código de aplicación</span>
+              <span class="lang-en"
+                >Manual logging implemented in application code</span
+              >
+              <span class="lang-es"
+                >Logging manual implementado en código de aplicación</span
+              >
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div class="space-y-2 text-sm">
-              <p><strong class="text-slate-900 dark:text-slate-200">Panoptes:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">Automatic before/after, consistent schema, zero per-query code.</span><span class="lang-es">Before/after automático, esquema consistente, cero código por consulta.</span></span></p>
-              <p><strong class="text-slate-900 dark:text-slate-200">Manual logs:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">Custom code each time, easy to miss queries, no enforced structure.</span><span class="lang-es">Código a medida, fácil olvidar consultas, sin estructura forzada.</span></span></p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Panoptes:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >Automatic before/after, consistent schema, zero per-query
+                    code.</span
+                  ><span class="lang-es"
+                    >Before/after automático, esquema consistente, cero código
+                    por consulta.</span
+                  ></span>
+              </p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Manual logs:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >Custom code each time, easy to miss queries, no enforced
+                    structure.</span
+                  ><span class="lang-es"
+                    >Código a medida, fácil olvidar consultas, sin estructura
+                    forzada.</span
+                  ></span>
+              </p>
             </div>
 
             <Separator client:load />
 
             <div class="grid grid-cols-2 gap-3">
-              <div class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2">
+              <div
+                class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2"
+                >
                   Panoptes
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Zero dev effort</span>
                     <span class="lang-es">Cero esfuerzo dev</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Uniform events</span>
                     <span class="lang-es">Eventos uniformes</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Context-rich</span>
                     <span class="lang-es">Contexto completo</span>
                   </li>
                 </ul>
               </div>
-              <div class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2">
+              <div
+                class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2"
+                >
                   Manual
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">Inconsistent format</span>
                     <span class="lang-es">Formato inconsistente</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">Hard to maintain</span>
                     <span class="lang-es">Difícil de mantener</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">Missed queries</span>
                     <span class="lang-es">Consultas omitidas</span>
@@ -209,13 +441,26 @@ import { Badge } from '../../components/ui/badge';
           </CardContent>
         </Card>
 
-        <!-- Query Logging -->
-        <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all">
+        <Card
+          className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all"
+        >
           <CardHeader>
             <div class="flex items-center gap-3 mb-2">
-              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-                <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              <div
+                class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  ></path>
                 </svg>
               </div>
               <CardTitle className="text-lg">
@@ -224,69 +469,162 @@ import { Badge } from '../../components/ui/badge';
               </CardTitle>
             </div>
             <CardDescription>
-              <span class="lang-en">Database-native query logging features</span>
-              <span class="lang-es">Funcionalidades nativas de logging de consultas</span>
+              <span class="lang-en">Database-native query logging features</span
+              >
+              <span class="lang-es"
+                >Funcionalidades nativas de logging de consultas</span
+              >
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div class="space-y-2 text-sm">
-              <p><strong class="text-slate-900 dark:text-slate-200">Panoptes:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">Captures full before/after payloads, parameters, and user/session context.</span><span class="lang-es">Captura payloads before/after, parámetros y contexto de usuario/sesión.</span></span></p>
-              <p><strong class="text-slate-900 dark:text-slate-200">Query logs:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">Only raw SQL text; no structured context; redaction is manual.</span><span class="lang-es">Solo texto SQL; sin contexto estructurado; redacción manual.</span></span></p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Panoptes:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >Captures full before/after payloads, parameters, and
+                    user/session context.</span
+                  ><span class="lang-es"
+                    >Captura payloads before/after, parámetros y contexto de
+                    usuario/sesión.</span
+                  ></span>
+              </p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Query logs:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >Only raw SQL text; no structured context; redaction is
+                    manual.</span
+                  ><span class="lang-es"
+                    >Solo texto SQL; sin contexto estructurado; redacción
+                    manual.</span
+                  ></span>
+              </p>
             </div>
 
             <Separator client:load />
 
             <div class="grid grid-cols-2 gap-3">
-              <div class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2">
+              <div
+                class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2"
+                >
                   Panoptes
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Structured JSON</span>
                     <span class="lang-es">JSON estructurado</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Before/after diffs</span>
                     <span class="lang-es">Diffs before/after</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Filter at app level</span>
                     <span class="lang-es">Filtrado en app</span>
                   </li>
                 </ul>
               </div>
-              <div class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2">
+              <div
+                class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2"
+                >
                   Query logs
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">No context</span>
                     <span class="lang-es">Sin contexto</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">Manual redaction</span>
                     <span class="lang-es">Redacción manual</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">Unstructured</span>
                     <span class="lang-es">No estructurado</span>
@@ -297,13 +635,26 @@ import { Badge } from '../../components/ui/badge';
           </CardContent>
         </Card>
 
-        <!-- Change Data Capture -->
-        <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all">
+        <Card
+          className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90 hover:border-indigo-500/50 dark:hover:border-violet-400/50 transition-all"
+        >
           <CardHeader>
             <div class="flex items-center gap-3 mb-2">
-              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-                <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+              <div
+                class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+              >
+                <svg
+                  class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                  ></path>
                 </svg>
               </div>
               <CardTitle className="text-lg">
@@ -313,68 +664,156 @@ import { Badge } from '../../components/ui/badge';
             </div>
             <CardDescription>
               <span class="lang-en">Stream-based database change tracking</span>
-              <span class="lang-es">Rastreo de cambios basado en streaming</span>
+              <span class="lang-es">Rastreo de cambios basado en streaming</span
+              >
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div class="space-y-2 text-sm">
-              <p><strong class="text-slate-900 dark:text-slate-200">Panoptes:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">Immediate events with app context, simple setup, app-level filtering.</span><span class="lang-es">Eventos inmediatos con contexto de app, configuración simple, filtrado en app.</span></span></p>
-              <p><strong class="text-slate-900 dark:text-slate-200">CDC:</strong> <span class="text-slate-600 dark:text-slate-400"><span class="lang-en">Transaction log streaming, infra heavy, no app context.</span><span class="lang-es">Streaming de log transaccional, infraestructura pesada, sin contexto de app.</span></span></p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200"
+                  >Panoptes:</strong
+                >
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >Immediate events with app context, simple setup, app-level
+                    filtering.</span
+                  ><span class="lang-es"
+                    >Eventos inmediatos con contexto de app, configuración
+                    simple, filtrado en app.</span
+                  ></span>
+              </p>
+              <p>
+                <strong class="text-slate-900 dark:text-slate-200">CDC:</strong>
+                <span class="text-slate-600 dark:text-slate-400"
+                  ><span class="lang-en"
+                    >Transaction log streaming, infra heavy, no app context.</span
+                  ><span class="lang-es"
+                    >Streaming de log transaccional, infraestructura pesada, sin
+                    contexto de app.</span
+                  ></span>
+              </p>
             </div>
 
             <Separator client:load />
 
             <div class="grid grid-cols-2 gap-3">
-              <div class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2">
+              <div
+                class="rounded-lg border border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-green-900 dark:text-green-400 mb-2"
+                >
                   Panoptes
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">App context</span>
                     <span class="lang-es">Contexto app</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Multi-database</span>
                     <span class="lang-es">Multi-base</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    <svg
+                      class="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                     <span class="lang-en">Lightweight</span>
                     <span class="lang-es">Ligero</span>
                   </li>
                 </ul>
               </div>
-              <div class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2">
+              <div
+                class="rounded-lg border border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30 p-3"
+              >
+                <p
+                  class="text-xs font-semibold uppercase tracking-wide text-amber-900 dark:text-amber-400 mb-2"
+                >
                   CDC
                 </p>
-                <ul class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <ul
+                  class="space-y-1.5 text-xs text-slate-700 dark:text-slate-300"
+                >
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">Infra/ops overhead</span>
                     <span class="lang-es">Overhead de infra</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">DB-specific</span>
                     <span class="lang-es">Específico BD</span>
                   </li>
                   <li class="flex items-start gap-1.5">
-                    <svg class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    <svg
+                      class="h-4 w-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                     <span class="lang-en">No user context</span>
                     <span class="lang-es">Sin contexto usuario</span>
@@ -397,11 +836,22 @@ import { Badge } from '../../components/ui/badge';
       </h2>
 
       <div class="grid gap-6 md:grid-cols-2">
-        <Card className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30">
+        <Card
+          className="border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30"
+        >
           <CardHeader>
             <div class="flex items-center gap-2 mb-2">
-              <svg class="h-6 w-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              <svg
+                class="h-6 w-6 text-green-600 dark:text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
               <CardTitle className="text-lg text-green-900 dark:text-green-400">
                 <span class="lang-en">Ideal For</span>
@@ -412,50 +862,121 @@ import { Badge } from '../../components/ui/badge';
           <CardContent>
             <ul class="space-y-3 text-sm">
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                <svg
+                  class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>Compliance-heavy industries:</strong> Healthcare (HIPAA), Finance (SOX), E-commerce (PCI-DSS)</span>
-                  <span class="lang-es"><strong>Industrias reguladas:</strong> Salud (HIPAA), Finanzas (SOX), E-commerce (PCI-DSS)</span>
+                  <span class="lang-en"
+                    ><strong>Compliance-heavy industries:</strong> Healthcare (HIPAA),
+                    Finance (SOX), E-commerce (PCI-DSS)</span
+                  >
+                  <span class="lang-es"
+                    ><strong>Industrias reguladas:</strong> Salud (HIPAA), Finanzas
+                    (SOX), E-commerce (PCI-DSS)</span
+                  >
                 </span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                <svg
+                  class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>Security audits & forensics:</strong> Track who changed what and when</span>
-                  <span class="lang-es"><strong>Auditorías y forense:</strong> Rastrea quién cambió qué y cuándo</span>
+                  <span class="lang-en"
+                    ><strong>Security audits & forensics:</strong> Track who changed
+                    what and when</span
+                  >
+                  <span class="lang-es"
+                    ><strong>Auditorías y forense:</strong> Rastrea quién cambió qué
+                    y cuándo</span
+                  >
                 </span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                <svg
+                  class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>Multi-tenant SaaS:</strong> Per-tenant audit trails with isolation</span>
-                  <span class="lang-es"><strong>SaaS multi-tenant:</strong> Rastros de auditoría por tenant con aislamiento</span>
+                  <span class="lang-en"
+                    ><strong>Multi-tenant SaaS:</strong> Per-tenant audit trails with
+                    isolation</span
+                  >
+                  <span class="lang-es"
+                    ><strong>SaaS multi-tenant:</strong> Rastros de auditoría por
+                    tenant con aislamiento</span
+                  >
                 </span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                <svg
+                  class="h-5 w-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>Data recovery scenarios:</strong> Restore deleted/modified records</span>
-                  <span class="lang-es"><strong>Recuperación de datos:</strong> Restaura registros eliminados/modificados</span>
+                  <span class="lang-en"
+                    ><strong>Data recovery scenarios:</strong> Restore deleted/modified
+                    records</span
+                  >
+                  <span class="lang-es"
+                    ><strong>Recuperación de datos:</strong> Restaura registros eliminados/modificados</span
+                  >
                 </span>
               </li>
             </ul>
           </CardContent>
         </Card>
 
-        <Card className="border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30">
+        <Card
+          className="border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/30"
+        >
           <CardHeader>
             <div class="flex items-center gap-2 mb-2">
-              <svg class="h-6 w-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              <svg
+                class="h-6 w-6 text-amber-600 dark:text-amber-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                ></path>
               </svg>
               <CardTitle className="text-lg text-amber-900 dark:text-amber-400">
                 <span class="lang-en">Not Ideal When</span>
@@ -466,30 +987,78 @@ import { Badge } from '../../components/ui/badge';
           <CardContent>
             <ul class="space-y-3 text-sm">
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                <svg
+                  class="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  ></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>You only need raw query text:</strong> DB query logs might suffice</span>
-                  <span class="lang-es"><strong>Solo necesitas texto de query:</strong> Logs de BD podrían ser suficientes</span>
+                  <span class="lang-en"
+                    ><strong>You only need raw query text:</strong> DB query logs
+                    might suffice</span
+                  >
+                  <span class="lang-es"
+                    ><strong>Solo necesitas texto de query:</strong> Logs de BD podrían
+                    ser suficientes</span
+                  >
                 </span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                <svg
+                  class="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  ></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>You can't afford before/after reads:</strong> Very high-volume scenarios</span>
-                  <span class="lang-es"><strong>No puedes hacer lecturas before/after:</strong> Escenarios de muy alto volumen</span>
+                  <span class="lang-en"
+                    ><strong>You can't afford before/after reads:</strong> Very high-volume
+                    scenarios</span
+                  >
+                  <span class="lang-es"
+                    ><strong>No puedes hacer lecturas before/after:</strong> Escenarios
+                    de muy alto volumen</span
+                  >
                 </span>
               </li>
               <li class="flex items-start gap-2">
-                <svg class="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                <svg
+                  class="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  ></path>
                 </svg>
                 <span class="text-slate-700 dark:text-slate-300">
-                  <span class="lang-en"><strong>Strictly DB-level-only policies:</strong> Regulatory requirement for DB triggers</span>
-                  <span class="lang-es"><strong>Políticas solo a nivel BD:</strong> Requisito regulatorio para triggers de BD</span>
+                  <span class="lang-en"
+                    ><strong>Strictly DB-level-only policies:</strong> Regulatory
+                    requirement for DB triggers</span
+                  >
+                  <span class="lang-es"
+                    ><strong>Políticas solo a nivel BD:</strong> Requisito regulatorio
+                    para triggers de BD</span
+                  >
                 </span>
               </li>
             </ul>
@@ -500,30 +1069,51 @@ import { Badge } from '../../components/ui/badge';
 
     <Separator client:load className="my-8" />
 
-    <!-- Next Steps -->
     <div class="mb-10">
       <h2 class="text-3xl font-bold mb-4">
         <span class="lang-en">Next Steps</span>
         <span class="lang-es">Próximos Pasos</span>
       </h2>
       <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
-        <span class="lang-en">Ready to start using Panoptes? Return to Getting Started to begin your implementation journey.</span>
-        <span class="lang-es">¿Listo para comenzar a usar Panoptes? Regresa a Comenzar para iniciar tu viaje de implementación.</span>
+        <span class="lang-en"
+          >Ready to start using Panoptes? Return to Getting Started to begin
+          your implementation journey.</span
+        >
+        <span class="lang-es"
+          >¿Listo para comenzar a usar Panoptes? Regresa a Comenzar para iniciar
+          tu viaje de implementación.</span
+        >
       </p>
 
       <a href="/docs/getting-started" class="block">
-        <Card client:load className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer">
+        <Card
+          client:load
+          className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer"
+        >
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
               <span class="lang-en">Return to Getting Started</span>
               <span class="lang-es">Regresar a Comenzar</span>
             </CardTitle>
             <CardDescription>
-              <span class="lang-en">Learn how to integrate Panoptes into your app</span>
-              <span class="lang-es">Aprende cómo integrar Panoptes en tu app</span>
+              <span class="lang-en"
+                >Learn how to integrate Panoptes into your app</span
+              >
+              <span class="lang-es"
+                >Aprende cómo integrar Panoptes en tu app</span
+              >
             </CardDescription>
           </CardHeader>
         </Card>

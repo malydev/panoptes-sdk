@@ -4,13 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 
-/* Idiomas: mostrar/ocultar según data-lang en <html> */
 .lang-en { display: inline; }
 .lang-es { display: none; }
 :root[data-lang='es'] .lang-en { display: none; }
 :root[data-lang='es'] .lang-es { display: inline; }
 
-/* Note: --doc-* variables have been replaced with direct Tailwind classes throughout the codebase */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

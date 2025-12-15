@@ -1,37 +1,64 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
-import { CodeBlock, InlineCode } from '../../components/ui/code-block';
-import { Badge } from '../../components/ui/badge';
-import { Separator } from '../../components/ui/separator';
+import DocsLayout from "@/layouts/DocsLayout.astro";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { CodeBlock } from "@/components/ui/code-block";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 ---
 
-<DocsLayout title="Integrations - Panoptes SDK" description="Integrate Panoptes SDK with your stack">
+<DocsLayout
+  title="Integrations - Panoptes SDK"
+  description="Integrate Panoptes SDK with your stack"
+>
   <div class="space-y-10">
-    <!-- Hero Section -->
     <div class="mb-8">
       <h1 class="text-4xl font-bold tracking-tight mb-4">
         <span class="lang-en">Integrations & Transports</span>
         <span class="lang-es">Integraciones y Transportes</span>
       </h1>
       <p class="text-xl text-slate-600 dark:text-slate-400">
-        <span class="lang-en">Panoptes SDK integrates seamlessly with your existing stack. Send audit events to multiple destinations using transports.</span>
-        <span class="lang-es">Panoptes SDK se integra perfectamente con tu stack existente. Envía eventos de auditoría a múltiples destinos usando transportes.</span>
+        <span class="lang-en"
+          >Panoptes SDK integrates seamlessly with your existing stack. Send
+          audit events to multiple destinations using transports.</span
+        >
+        <span class="lang-es"
+          >Panoptes SDK se integra perfectamente con tu stack existente. Envía
+          eventos de auditoría a múltiples destinos usando transportes.</span
+        >
       </p>
     </div>
 
-    <!-- What are Transports -->
     <div class="space-y-6">
       <h2 class="text-2xl font-bold">
         <span class="lang-en">What are Transports?</span>
         <span class="lang-es">¿Qué son los Transportes?</span>
       </h2>
 
-      <Card className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5">
+      <Card
+        className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5"
+      >
         <CardContent className="pt-6">
           <p class="text-slate-600 dark:text-slate-400">
-            <span class="lang-en">Transports define where your audit events are sent. You can configure multiple transports to send the same audit event to different destinations simultaneously - for example, both console output for development and a dedicated audit database for production.</span>
-            <span class="lang-es">Los transportes definen dónde se envían tus eventos de auditoría. Puedes configurar múltiples transportes para enviar el mismo evento de auditoría a diferentes destinos simultáneamente - por ejemplo, tanto salida de consola para desarrollo como una base de datos de auditoría dedicada para producción.</span>
+            <span class="lang-en"
+              >Transports define where your audit events are sent. You can
+              configure multiple transports to send the same audit event to
+              different destinations simultaneously - for example, both console
+              output for development and a dedicated audit database for
+              production.</span
+            >
+            <span class="lang-es"
+              >Los transportes definen dónde se envían tus eventos de auditoría.
+              Puedes configurar múltiples transportes para enviar el mismo
+              evento de auditoría a diferentes destinos simultáneamente - por
+              ejemplo, tanto salida de consola para desarrollo como una base de
+              datos de auditoría dedicada para producción.</span
+            >
           </p>
         </CardContent>
       </Card>
@@ -39,7 +66,6 @@ import { Separator } from '../../components/ui/separator';
 
     <Separator client:load className="my-8" />
 
-    <!-- Built-in Transports -->
     <div class="space-y-6">
       <div>
         <h2 class="text-2xl font-bold mb-2">
@@ -47,18 +73,35 @@ import { Separator } from '../../components/ui/separator';
           <span class="lang-es">Transportes Integrados</span>
         </h2>
         <p class="text-slate-600 dark:text-slate-400">
-          <span class="lang-en">Panoptes SDK includes 4 built-in transports ready to use:</span>
-          <span class="lang-es">Panoptes SDK incluye 4 transportes integrados listos para usar:</span>
+          <span class="lang-en"
+            >Panoptes SDK includes 4 built-in transports ready to use:</span
+          >
+          <span class="lang-es"
+            >Panoptes SDK incluye 4 transportes integrados listos para usar:</span
+          >
         </p>
       </div>
 
-      <!-- Console Transport -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <div class="flex items-center gap-3">
-            <div class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-              <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            <div
+              class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path>
               </svg>
             </div>
             <div>
@@ -71,8 +114,14 @@ import { Separator } from '../../components/ui/separator';
                 </Badge>
               </CardTitle>
               <CardDescription>
-                <span class="lang-en">Perfect for development and debugging. Logs audit events to the console with a clear prefix.</span>
-                <span class="lang-es">Perfecto para desarrollo y depuración. Registra eventos de auditoría en la consola con un prefijo claro.</span>
+                <span class="lang-en"
+                  >Perfect for development and debugging. Logs audit events to
+                  the console with a clear prefix.</span
+                >
+                <span class="lang-es"
+                  >Perfecto para desarrollo y depuración. Registra eventos de
+                  auditoría en la consola con un prefijo claro.</span
+                >
               </CardDescription>
             </div>
           </div>
@@ -97,13 +146,26 @@ initAudit({
         </CardContent>
       </Card>
 
-      <!-- File Transport -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <div class="flex items-center gap-3">
-            <div class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-              <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            <div
+              class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
               </svg>
             </div>
             <div>
@@ -116,8 +178,14 @@ initAudit({
                 </Badge>
               </CardTitle>
               <CardDescription>
-                <span class="lang-en">Write audit events to log files. Each event is appended as a JSON line (JSONL format).</span>
-                <span class="lang-es">Escribe eventos de auditoría en archivos de log. Cada evento se agrega como una línea JSON (formato JSONL).</span>
+                <span class="lang-en"
+                  >Write audit events to log files. Each event is appended as a
+                  JSON line (JSONL format).</span
+                >
+                <span class="lang-es"
+                  >Escribe eventos de auditoría en archivos de log. Cada evento
+                  se agrega como una línea JSON (formato JSONL).</span
+                >
               </CardDescription>
             </div>
           </div>
@@ -147,13 +215,26 @@ initAudit({
         </CardContent>
       </Card>
 
-      <!-- HTTP Transport -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <div class="flex items-center gap-3">
-            <div class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-              <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+            <div
+              class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                ></path>
               </svg>
             </div>
             <div>
@@ -166,8 +247,16 @@ initAudit({
                 </Badge>
               </CardTitle>
               <CardDescription>
-                <span class="lang-en">Send audit events to any HTTP endpoint. Perfect for integrating with webhooks, SIEM systems, or custom audit services.</span>
-                <span class="lang-es">Envía eventos de auditoría a cualquier endpoint HTTP. Perfecto para integrar con webhooks, sistemas SIEM, o servicios de auditoría personalizados.</span>
+                <span class="lang-en"
+                  >Send audit events to any HTTP endpoint. Perfect for
+                  integrating with webhooks, SIEM systems, or custom audit
+                  services.</span
+                >
+                <span class="lang-es"
+                  >Envía eventos de auditoría a cualquier endpoint HTTP.
+                  Perfecto para integrar con webhooks, sistemas SIEM, o
+                  servicios de auditoría personalizados.</span
+                >
               </CardDescription>
             </div>
           </div>
@@ -197,13 +286,26 @@ initAudit({
         </CardContent>
       </Card>
 
-      <!-- Database Transport -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <div class="flex items-center gap-3">
-            <div class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0">
-              <svg class="h-6 w-6 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+            <div
+              class="h-12 w-12 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="h-6 w-6 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                ></path>
               </svg>
             </div>
             <div>
@@ -216,8 +318,15 @@ initAudit({
                 </Badge>
               </CardTitle>
               <CardDescription>
-                <span class="lang-en">Store audit events in a dedicated database. Supports all 5 database engines (PostgreSQL, MySQL, MSSQL, SQLite, Oracle).</span>
-                <span class="lang-es">Almacena eventos de auditoría en una base de datos dedicada. Soporta los 5 motores de base de datos (PostgreSQL, MySQL, MSSQL, SQLite, Oracle).</span>
+                <span class="lang-en"
+                  >Store audit events in a dedicated database. Supports all 5
+                  database engines (PostgreSQL, MySQL, MSSQL, SQLite, Oracle).</span
+                >
+                <span class="lang-es"
+                  >Almacena eventos de auditoría en una base de datos dedicada.
+                  Soporta los 5 motores de base de datos (PostgreSQL, MySQL,
+                  MSSQL, SQLite, Oracle).</span
+                >
               </CardDescription>
             </div>
           </div>
@@ -264,22 +373,30 @@ initAudit({
 
     <Separator client:load className="my-8" />
 
-    <!-- Multiple Transports -->
     <div class="space-y-6">
       <h2 class="text-2xl font-bold">
         <span class="lang-en">Multiple Transports</span>
         <span class="lang-es">Múltiples Transportes</span>
       </h2>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Enable All Transports Simultaneously</span>
-            <span class="lang-es">Habilitar Todos los Transportes Simultáneamente</span>
+            <span class="lang-es"
+              >Habilitar Todos los Transportes Simultáneamente</span
+            >
           </CardTitle>
           <CardDescription>
-            <span class="lang-en">All enabled transports receive every audit event</span>
-            <span class="lang-es">Todos los transportes habilitados reciben cada evento de auditoría</span>
+            <span class="lang-en"
+              >All enabled transports receive every audit event</span
+            >
+            <span class="lang-es"
+              >Todos los transportes habilitados reciben cada evento de
+              auditoría</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -320,11 +437,23 @@ initAudit({
         </CardContent>
       </Card>
 
-      <Card className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5">
+      <Card
+        className="border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5"
+      >
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              ></path>
             </svg>
             <span class="lang-en">Best Practice</span>
             <span class="lang-es">Mejor Práctica</span>
@@ -333,21 +462,43 @@ initAudit({
         <CardContent>
           <ul class="space-y-2 text-sm">
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
               <span>
                 <strong class="text-slate-900 dark:text-slate-200">
                   <span class="lang-en">Development:</span>
                   <span class="lang-es">Desarrollo:</span>
                 </strong>
-                <span class="lang-en"> Use console transport for quick debugging</span>
-                <span class="lang-es"> Usa transporte de consola para depuración rápida</span>
+                <span class="lang-en">
+                  Use console transport for quick debugging</span
+                >
+                <span class="lang-es">
+                  Usa transporte de consola para depuración rápida</span
+                >
               </span>
             </li>
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
               <span>
                 <strong class="text-slate-900 dark:text-slate-200">
@@ -355,20 +506,35 @@ initAudit({
                   <span class="lang-es">Staging:</span>
                 </strong>
                 <span class="lang-en"> Combine console + file for testing</span>
-                <span class="lang-es"> Combina consola + archivo para pruebas</span>
+                <span class="lang-es">
+                  Combina consola + archivo para pruebas</span
+                >
               </span>
             </li>
             <li class="flex items-start gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"></path>
               </svg>
               <span>
                 <strong class="text-slate-900 dark:text-slate-200">
                   <span class="lang-en">Production:</span>
                   <span class="lang-es">Producción:</span>
                 </strong>
-                <span class="lang-en"> Use database + HTTP for compliance and monitoring</span>
-                <span class="lang-es"> Usa base de datos + HTTP para cumplimiento y monitoreo</span>
+                <span class="lang-en">
+                  Use database + HTTP for compliance and monitoring</span
+                >
+                <span class="lang-es">
+                  Usa base de datos + HTTP para cumplimiento y monitoreo</span
+                >
               </span>
             </li>
           </ul>
@@ -386,11 +552,19 @@ initAudit({
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">When using the database transport, Panoptes creates a comprehensive audit table with all relevant fields:</span>
-        <span class="lang-es">Cuando uses el transporte de base de datos, Panoptes crea una tabla de auditoría completa con todos los campos relevantes:</span>
+        <span class="lang-en"
+          >When using the database transport, Panoptes creates a comprehensive
+          audit table with all relevant fields:</span
+        >
+        <span class="lang-es"
+          >Cuando uses el transporte de base de datos, Panoptes crea una tabla
+          de auditoría completa con todos los campos relevantes:</span
+        >
       </p>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardContent className="pt-6">
           <CodeBlock
             client:load
@@ -463,11 +637,18 @@ CREATE TABLE panoptes_audit_log (
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">With the database transport, you can easily query your audit logs:</span>
-        <span class="lang-es">Con el transporte de base de datos, puedes consultar fácilmente tus logs de auditoría:</span>
+        <span class="lang-en"
+          >With the database transport, you can easily query your audit logs:</span
+        >
+        <span class="lang-es"
+          >Con el transporte de base de datos, puedes consultar fácilmente tus
+          logs de auditoría:</span
+        >
       </p>
 
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg">
             <span class="lang-en">Common Audit Queries</span>
@@ -520,16 +701,32 @@ ORDER BY timestamp DESC;`}
       </h2>
 
       <p class="text-slate-600 dark:text-slate-400">
-        <span class="lang-en">Popular integrations with external systems and tools:</span>
-        <span class="lang-es">Integraciones populares con sistemas y herramientas externas:</span>
+        <span class="lang-en"
+          >Popular integrations with external systems and tools:</span
+        >
+        <span class="lang-es"
+          >Integraciones populares con sistemas y herramientas externas:</span
+        >
       </p>
 
       <!-- Splunk -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
             </svg>
             <span class="lang-en">Splunk Integration (via HTTP)</span>
             <span class="lang-es">Integración con Splunk (vía HTTP)</span>
@@ -556,15 +753,26 @@ ORDER BY timestamp DESC;`}
         </CardContent>
       </Card>
 
-      <!-- Elasticsearch -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
             <span class="lang-en">Elasticsearch Integration (via HTTP)</span>
-            <span class="lang-es">Integración con Elasticsearch (vía HTTP)</span>
+            <span class="lang-es">Integración con Elasticsearch (vía HTTP)</span
+            >
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -589,19 +797,40 @@ ORDER BY timestamp DESC;`}
         </CardContent>
       </Card>
 
-      <!-- Log Aggregation -->
-      <Card className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90">
+      <Card
+        className="border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900/90"
+      >
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+            <svg
+              class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+              ></path>
             </svg>
-            <span class="lang-en">Log Aggregation (File + External Service)</span>
-            <span class="lang-es">Agregación de Logs (Archivo + Servicio Externo)</span>
+            <span class="lang-en"
+              >Log Aggregation (File + External Service)</span
+            >
+            <span class="lang-es"
+              >Agregación de Logs (Archivo + Servicio Externo)</span
+            >
           </CardTitle>
           <CardDescription>
-            <span class="lang-en">Use file transport with log shipping tools like Filebeat, Fluentd, or Logstash</span>
-            <span class="lang-es">Usa el transporte de archivo con herramientas de envío de logs como Filebeat, Fluentd, o Logstash</span>
+            <span class="lang-en"
+              >Use file transport with log shipping tools like Filebeat,
+              Fluentd, or Logstash</span
+            >
+            <span class="lang-es"
+              >Usa el transporte de archivo con herramientas de envío de logs
+              como Filebeat, Fluentd, o Logstash</span
+            >
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -635,30 +864,51 @@ initAudit({
 
     <Separator client:load className="my-8" />
 
-    <!-- Next Steps -->
     <div class="mb-10">
       <h2 class="text-3xl font-bold mb-4">
         <span class="lang-en">Next Steps</span>
         <span class="lang-es">Próximos Pasos</span>
       </h2>
       <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
-        <span class="lang-en">Now that you understand transports and integrations, continue to Comparison to see how Panoptes compares to other solutions.</span>
-        <span class="lang-es">Ahora que entiendes transportes e integraciones, continúa a Comparación para ver cómo Panoptes se compara con otras soluciones.</span>
+        <span class="lang-en"
+          >Now that you understand transports and integrations, continue to
+          Comparison to see how Panoptes compares to other solutions.</span
+        >
+        <span class="lang-es"
+          >Ahora que entiendes transportes e integraciones, continúa a
+          Comparación para ver cómo Panoptes se compara con otras soluciones.</span
+        >
       </p>
 
       <a href="/docs/comparison" class="block">
-        <Card client:load className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer">
+        <Card
+          client:load
+          className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer"
+        >
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              <svg
+                class="h-5 w-5 text-indigo-500 dark:text-violet-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
               <span class="lang-en">Continue to Comparison</span>
               <span class="lang-es">Continuar a Comparación</span>
             </CardTitle>
             <CardDescription>
-              <span class="lang-en">Compare Panoptes with other audit solutions</span>
-              <span class="lang-es">Compara Panoptes con otras soluciones de auditoría</span>
+              <span class="lang-en"
+                >Compare Panoptes with other audit solutions</span
+              >
+              <span class="lang-es"
+                >Compara Panoptes con otras soluciones de auditoría</span
+              >
             </CardDescription>
           </CardHeader>
         </Card>

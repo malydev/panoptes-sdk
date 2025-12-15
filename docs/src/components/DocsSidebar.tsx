@@ -42,7 +42,7 @@ const navigationItems: NavItem[] = [
   },
 ];
 
-const SDK_VERSION = "1.0.0";
+const SDK_VERSION = "0.2.1";
 
 const translations = {
   "Getting Started": {
@@ -149,7 +149,6 @@ function SidebarItem({ item, level = 0 }: SidebarItemProps) {
 export function DocsSidebar() {
   return (
     <aside className="w-full flex flex-col h-screen">
-      {/* Brand header */}
       <div className="px-4 py-4 flex-shrink-0">
         <a href="/" className="group block">
           <div className="flex items-center gap-3 rounded-lg border border-slate-200/60 dark:border-slate-700/50 bg-white dark:bg-gray-900 p-3 shadow-sm transition-all hover:shadow-lg hover:border-indigo-500 dark:hover:border-violet-400">
@@ -170,7 +169,6 @@ export function DocsSidebar() {
         </a>
       </div>
 
-      {/* Navigation - Main content */}
       <nav className="px-3 flex-1 overflow-hidden">
         <div className="space-y-1">
           {navigationItems.map((item) => (
@@ -179,7 +177,6 @@ export function DocsSidebar() {
         </div>
       </nav>
 
-      {/* Footer info - Fixed at bottom */}
       <div className="px-4 py-3 border-t border-slate-200/60 dark:border-slate-700/50 flex-shrink-0 space-y-3">
         {/* Version Badge */}
         <div className="flex items-center justify-between">
@@ -192,7 +189,6 @@ export function DocsSidebar() {
           </span>
         </div>
 
-        {/* Quick Links */}
         <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2">
           <p className="font-medium text-slate-700 dark:text-slate-300">
             <span className="lang-en">Resources</span>
