@@ -42,7 +42,7 @@ const navigationItems: NavItem[] = [
   },
 ];
 
-const SDK_VERSION = "0.2.2";
+const SDK_VERSION = "0.2.3";
 
 const translations = {
   "Getting Started": {
