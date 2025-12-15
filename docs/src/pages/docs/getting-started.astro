@@ -1,151 +1,476 @@
 ---
-import DocsLayout from '../../layouts/DocsLayout.astro';
-import { CodeBlock, InlineCode } from '../../components/ui/code-block';
+import DocsLayout from '@/layouts/DocsLayout.astro';
+import { CodeBlock, InlineCode } from '@/components/ui/code-block';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { KeyFeaturesAccordion, WhyPanoptesAccordion } from '@/components/GettingStartedAccordions';
 ---
 
 <DocsLayout title="Getting Started - Panoptes SDK" description="Get started with Panoptes SDK">
-  <div class="prose dark:prose-invert max-w-none">
-    <h1>Getting Started with Panoptes SDK</h1>
+  <div class="max-w-none">
+    <!-- Hero Section -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold tracking-tight mb-4">
+        <span class="lang-en">Getting Started with Panoptes SDK</span>
+        <span class="lang-es">Comenzando con Panoptes SDK</span>
+      </h1>
 
-    <p class="lead text-xl text-muted-foreground">
-      Panoptes SDK is a powerful auditing solution that tracks every SQL query in your application with complete before/after data capture, user context, and flexible multi-destination event routing.
-    </p>
+      <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">
+        <span class="lang-en">Enterprise-grade SQL auditing solution with zero configuration, flexible rules, and multi-database support. Automatically audit all SQL queries with rich context.</span>
+        <span class="lang-es">Solución de auditoría SQL de nivel empresarial con configuración cero, reglas flexibles y soporte multi-base de datos. Audita automáticamente todas las consultas SQL con contexto rico.</span>
+      </p>
 
-    <h2>What is Panoptes?</h2>
-    <p>
-      Panoptes (named after the all-seeing giant from Greek mythology) is designed to be the <strong>vigilant guardian of your database operations</strong>. It provides:
-    </p>
+      <!-- Project Badges -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <a href="https://www.npmjs.com/package/panoptes-sdk" target="_blank" rel="noopener noreferrer">
+          <img src="https://img.shields.io/npm/v/panoptes-sdk?style=flat-square&logo=npm&color=CB3837" alt="NPM Version" class="h-5" />
+        </a>
+        <a href="https://www.npmjs.com/package/panoptes-sdk" target="_blank" rel="noopener noreferrer">
+          <img src="https://img.shields.io/npm/dm/panoptes-sdk?style=flat-square&logo=npm&color=CB3837" alt="NPM Downloads" class="h-5" />
+        </a>
+        <a href="https://github.com/malydev/panoptes-sdk" target="_blank" rel="noopener noreferrer">
+          <img src="https://img.shields.io/github/stars/malydev/panoptes-sdk?style=flat-square&logo=github&color=181717" alt="GitHub Stars" class="h-5" />
+        </a>
+        <a href="https://github.com/malydev/panoptes-sdk/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">
+          <img src="https://img.shields.io/github/license/malydev/panoptes-sdk?style=flat-square&color=green" alt="License" class="h-5" />
+        </a>
+        <img src="https://img.shields.io/badge/TypeScript-Ready-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" class="h-5" />
+      </div>
 
-    <ul>
-      <li><strong>Complete Audit Trails:</strong> Automatically captures before and after states for UPDATE and DELETE operations</li>
-      <li><strong>Rich Context:</strong> Includes user information, IP addresses, roles, request IDs, and custom metadata with every event</li>
-      <li><strong>Multi-destination Support:</strong> Send audit events to multiple destinations (databases, message queues, cloud services, etc.)</li>
-      <li><strong>Zero Configuration:</strong> Simple wrapper pattern that works with your existing database clients</li>
-      <li><strong>Compliance Ready:</strong> Built for audits, forensics, regulatory compliance (GDPR, HIPAA, SOC2)</li>
-    </ul>
+      <!-- Database Support Badges -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <Badge client:load variant="secondary" className="px-3 py-1">
+          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/>
+          </svg>
+          PostgreSQL
+        </Badge>
+        <Badge client:load variant="secondary" className="px-3 py-1">
+          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/>
+          </svg>
+          MySQL
+        </Badge>
+        <Badge client:load variant="secondary" className="px-3 py-1">
+          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/>
+          </svg>
+          MSSQL
+        </Badge>
+        <Badge client:load variant="secondary" className="px-3 py-1">
+          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/>
+          </svg>
+          SQLite
+        </Badge>
+        <Badge client:load variant="secondary" className="px-3 py-1">
+          <svg class="w-4 h-4 mr-1.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/>
+          </svg>
+          Oracle
+        </Badge>
+      </div>
+    </div>
 
-    <h2>Why Use Panoptes?</h2>
+    <Separator client:load className="my-8" />
 
-    <h3>Security & Compliance</h3>
-    <p>
-      Meet regulatory requirements by maintaining complete audit logs of who changed what data, when, and from where. Perfect for industries that need to demonstrate compliance with data protection regulations.
-    </p>
+    <!-- What is Panoptes Section -->
+    <div class="mb-10">
+      <h2 class="text-3xl font-bold mb-6">
+        <span class="lang-en">What is Panoptes?</span>
+        <span class="lang-es">¿Qué es Panoptes?</span>
+      </h2>
 
-    <h3>Forensics & Debugging</h3>
-    <p>
-      When something goes wrong, Panoptes gives you the complete story. See exactly what data changed, who made the change, and the full context around the operation.
-    </p>
+      <div class="prose dark:prose-invert mb-6">
+        <p class="text-lg">
+          <span class="lang-en">Panoptes (named after the all-seeing giant from Greek mythology) is a <strong>modern alternative to database triggers</strong> that wraps your existing database clients to provide automatic SQL auditing.</span>
+          <span class="lang-es">Panoptes (nombrado en honor al gigante que todo lo ve de la mitología griega) es una <strong>alternativa moderna a los triggers de base de datos</strong> que envuelve tus clientes de base de datos existentes para proporcionar auditoría SQL automática.</span>
+        </p>
+      </div>
 
-    <h3>Data Recovery</h3>
-    <p>
-      With before/after snapshots, you can reconstruct historical states of your data or implement point-in-time recovery strategies.
-    </p>
+      <!-- Key Features Grid -->
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50">
+          <CardHeader>
+            <div class="flex items-center gap-2">
+              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <CardTitle className="text-lg">
+                <span class="lang-en">Zero Configuration</span>
+                <span class="lang-es">Configuración Cero</span>
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              <span class="lang-en">Auto-creates audit tables, no manual setup required</span>
+              <span class="lang-es">Crea automáticamente tablas de auditoría, sin configuración manual</span>
+            </p>
+          </CardContent>
+        </Card>
 
-    <h2>How It Works</h2>
-    <p>
-      Panoptes works by wrapping your existing database clients. Here's a simple example:
-    </p>
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50">
+          <CardHeader>
+            <div class="flex items-center gap-2">
+              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+                </svg>
+              </div>
+              <CardTitle className="text-lg">
+                <span class="lang-en">Multi-Database</span>
+                <span class="lang-es">Multi-Base de Datos</span>
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              <span class="lang-en">Works with PostgreSQL, MySQL, MSSQL, SQLite, and Oracle</span>
+              <span class="lang-es">Funciona con PostgreSQL, MySQL, MSSQL, SQLite y Oracle</span>
+            </p>
+          </CardContent>
+        </Card>
 
-    <CodeBlock
-      client:load
-      language="typescript"
-      code={`import { Panoptes } from 'panoptes-sdk';
-import { Pool } from 'pg';
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50">
+          <CardHeader>
+            <div class="flex items-center gap-2">
+              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+              </div>
+              <CardTitle className="text-lg">
+                <span class="lang-en">Rich Context</span>
+                <span class="lang-es">Contexto Rico</span>
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              <span class="lang-en">Tracks who, what, when, and where for every query</span>
+              <span class="lang-es">Rastrea quién, qué, cuándo y dónde para cada consulta</span>
+            </p>
+          </CardContent>
+        </Card>
 
-// Create your database client
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50">
+          <CardHeader>
+            <div class="flex items-center gap-2">
+              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                </svg>
+              </div>
+              <CardTitle className="text-lg">
+                <span class="lang-en">Flexible Rules</span>
+                <span class="lang-es">Reglas Flexibles</span>
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              <span class="lang-en">Configure auditing per table or operation type</span>
+              <span class="lang-es">Configura auditoría por tabla o tipo de operación</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50">
+          <CardHeader>
+            <div class="flex items-center gap-2">
+              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <CardTitle className="text-lg">
+                <span class="lang-en">Before/After Capture</span>
+                <span class="lang-es">Captura Antes/Después</span>
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              <span class="lang-en">Track data changes for compliance and forensics</span>
+              <span class="lang-es">Rastrea cambios de datos para cumplimiento y forense</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50">
+          <CardHeader>
+            <div class="flex items-center gap-2">
+              <div class="h-10 w-10 rounded-lg bg-indigo-500/10 dark:bg-violet-400/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                </svg>
+              </div>
+              <CardTitle className="text-lg">
+                <span class="lang-en">Multiple Transports</span>
+                <span class="lang-es">Múltiples Transportes</span>
+              </CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p class="text-sm text-slate-600 dark:text-slate-400">
+              <span class="lang-en">Console, File, HTTP endpoints, and Database storage</span>
+              <span class="lang-es">Consola, Archivos, endpoints HTTP y Base de Datos</span>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+
+    <Separator client:load className="my-8" />
+
+    <!-- Why Use Panoptes Section -->
+    <div class="mb-10">
+      <h2 class="text-3xl font-bold mb-6">
+        <span class="lang-en">Why Use Panoptes?</span>
+        <span class="lang-es">¿Por Qué Usar Panoptes?</span>
+      </h2>
+
+      <WhyPanoptesAccordion client:load />
+    </div>
+
+    <Separator client:load className="my-8" />
+
+    <!-- How It Works Section -->
+    <div class="mb-10">
+      <h2 class="text-3xl font-bold mb-4">
+        <span class="lang-en">How It Works</span>
+        <span class="lang-es">Cómo Funciona</span>
+      </h2>
+
+      <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
+        <span class="lang-en">Panoptes works by wrapping your existing database clients. Here's a simple example:</span>
+        <span class="lang-es">Panoptes funciona envolviendo tus clientes de base de datos existentes. Aquí hay un ejemplo simple:</span>
+      </p>
+
+      <div class="relative">
+        <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200/60 dark:bg-slate-700/50"></div>
+
+        <div class="space-y-8 relative">
+          <!-- Step 1 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-indigo-500 dark:bg-violet-400 text-white flex items-center justify-center text-xl font-bold relative z-10">
+              1
+            </div>
+            <div class="flex-1 pt-2">
+              <h3 class="text-xl font-semibold mb-2">
+                <span class="lang-en">Initialize Panoptes</span>
+                <span class="lang-es">Inicializar Panoptes</span>
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 mb-3">
+                <span class="lang-en">Configure your app name, environment, and transports</span>
+                <span class="lang-es">Configura tu nombre de app, ambiente y transportes</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-indigo-500 dark:bg-violet-400 text-white flex items-center justify-center text-xl font-bold relative z-10">
+              2
+            </div>
+            <div class="flex-1 pt-2">
+              <h3 class="text-xl font-semibold mb-2">
+                <span class="lang-en">Wrap Your Database Client</span>
+                <span class="lang-es">Envuelve tu Cliente de Base de Datos</span>
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 mb-3">
+                <span class="lang-en">Use <InlineCode client:load>createAudited*Client()</InlineCode> to wrap your existing client</span>
+                <span class="lang-es">Usa <InlineCode client:load>createAudited*Client()</InlineCode> para envolver tu cliente existente</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-indigo-500 dark:bg-violet-400 text-white flex items-center justify-center text-xl font-bold relative z-10">
+              3
+            </div>
+            <div class="flex-1 pt-2">
+              <h3 class="text-xl font-semibold mb-2">
+                <span class="lang-en">Set User Context</span>
+                <span class="lang-es">Establecer Contexto de Usuario</span>
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 mb-3">
+                <span class="lang-en">Provide user, session, and request information</span>
+                <span class="lang-es">Proporciona información de usuario, sesión y petición</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-16 h-16 rounded-full bg-indigo-500 dark:bg-violet-400 text-white flex items-center justify-center text-xl font-bold relative z-10">
+              4
+            </div>
+            <div class="flex-1 pt-2">
+              <h3 class="text-xl font-semibold mb-2">
+                <span class="lang-en">Use as Normal</span>
+                <span class="lang-es">Usar Normalmente</span>
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 mb-3">
+                <span class="lang-en">Execute queries like you always do - Panoptes handles the rest!</span>
+                <span class="lang-es">Ejecuta consultas como siempre lo haces - ¡Panoptes maneja el resto!</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <CodeBlock
+          client:load
+          language="javascript"
+          code={`import { initAudit, createAuditedPostgresClient, setUserContext } from '@panoptes/sdk';
+import { Client } from 'pg';
+
+// 1. Initialize Panoptes SDK
+initAudit({
+  appName: 'my-app',
+  environment: 'production',
+  transports: {
+    enabled: ['console', 'database'],
+    database: {
+      tableName: 'audit_logs'
+    }
+  }
 });
 
-// Wrap it with Panoptes
-const auditedPool = new Panoptes({
-  client: pool,
-  context: {
-    userId: 'user-123',
-    userEmail: 'john@example.com',
-    ipAddress: '192.168.1.1'
-  },
-  transports: [
-    // Send to audit database
-    auditDatabaseTransport,
-    // Send to message queue
-    kafkaTransport,
-  ]
+// 2. Create your database client
+const client = new Client({
+  host: 'localhost',
+  database: 'myapp',
+  user: 'postgres',
+  password: process.env.DB_PASSWORD
 });
 
-// Use it like normal - Panoptes handles the rest
-await auditedPool.query(
+// 3. Wrap it with Panoptes
+const auditedClient = createAuditedPostgresClient(client, {
+  host: 'localhost',
+  database: 'myapp'
+});
+
+await auditedClient.connect();
+
+// 4. Set user context
+setUserContext({
+  actorType: 'USER',
+  actorId: 'user-123',
+  actorName: 'John Doe',
+  actorEmail: 'john@example.com',
+  actorIp: '192.168.1.1'
+});
+
+// 5. Use it like normal - Panoptes handles the rest!
+await auditedClient.query(
   'UPDATE users SET email = $1 WHERE id = $2',
   ['newemail@example.com', 123]
 );`}
-    />
+        />
+      </div>
 
-    <p>
-      That's it! Every query now automatically:
-    </p>
-    <ul>
-      <li>Captures the before state (for UPDATE/DELETE)</li>
-      <li>Executes your query</li>
-      <li>Captures the after state</li>
-      <li>Generates a comprehensive audit event with all context</li>
-      <li>Sends the event to your configured destinations</li>
-    </ul>
+      <!-- What Happens Card -->
+      <Card client:load className="mt-6 border-indigo-500/20 dark:border-violet-400/20 bg-indigo-500/5 dark:bg-violet-400/5">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="lang-en">What Happens Automatically</span>
+            <span class="lang-es">Qué Sucede Automáticamente</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="lang-en">Captures the <strong>before state</strong> (for UPDATE/DELETE operations)</span>
+              <span class="lang-es">Captura el <strong>estado anterior</strong> (para operaciones UPDATE/DELETE)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="lang-en">Executes your query normally</span>
+              <span class="lang-es">Ejecuta tu consulta normalmente</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="lang-en">Captures the <strong>after state</strong> with new data</span>
+              <span class="lang-es">Captura el <strong>estado posterior</strong> con datos nuevos</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="lang-en">Generates a comprehensive audit event with all context</span>
+              <span class="lang-es">Genera un evento de auditoría completo con todo el contexto</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="lang-en">Sends the event to your configured transports</span>
+              <span class="lang-es">Envía el evento a tus transportes configurados</span>
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
 
-    <h2>Key Features</h2>
+    <Separator client:load className="my-8" />
 
-    <h3>Automatic Before/After Capture</h3>
-    <p>
-      For <InlineCode client:load>UPDATE</InlineCode> and <InlineCode client:load>DELETE</InlineCode> operations, Panoptes automatically fetches the current state before executing the query, then captures the new state after. This gives you a complete diff of what changed.
-    </p>
+    <!-- Key Features Detail Section -->
+    <div class="mb-10">
+      <h2 class="text-3xl font-bold mb-6">
+        <span class="lang-en">Key Features in Detail</span>
+        <span class="lang-es">Características Clave en Detalle</span>
+      </h2>
 
-    <h3>Flexible Context</h3>
-    <p>
-      Add any context you need to your audit events:
-    </p>
-    <CodeBlock
-      client:load
-      language="typescript"
-      code={`const context = {
-  userId: req.user.id,
-  userName: req.user.name,
-  userRole: req.user.role,
-  ipAddress: req.ip,
-  requestId: req.id,
-  sessionId: req.session.id,
-  // Any custom metadata
-  customField: 'custom-value'
-};`}
-    />
+      <KeyFeaturesAccordion client:load />
+    </div>
 
-    <h3>Multiple Transports</h3>
-    <p>
-      Send your audit events wherever you need them:
-    </p>
-    <ul>
-      <li>Dedicated audit database</li>
-      <li>Message queues (Kafka, RabbitMQ, SQS)</li>
-      <li>Cloud services (S3, CloudWatch, BigQuery)</li>
-      <li>SIEM systems</li>
-      <li>Custom webhooks</li>
-    </ul>
+    <Separator client:load className="my-8" />
 
-    <h2>Next Steps</h2>
-    <p>
-      Ready to get started? Check out our <a href="/docs/guides/installations">Installation Guide</a> for detailed setup instructions.
-    </p>
+    <!-- Next Steps -->
+    <div class="mb-10">
+      <h2 class="text-3xl font-bold mb-4">
+        <span class="lang-en">Next Steps</span>
+        <span class="lang-es">Próximos Pasos</span>
+      </h2>
+      <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
+        <span class="lang-en">Ready to get started? Continue to the Installation Guide for detailed setup instructions.</span>
+        <span class="lang-es">¿Listo para comenzar? Continúa a la Guía de Instalación para instrucciones detalladas de configuración.</span>
+      </p>
 
-    <div class="not-prose mt-8 flex gap-4">
-      <a
-        href="/docs/guides/installations"
-        class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90"
-      >
-        Installation Guide →
-      </a>
-      <a
-        href="/docs/integrations"
-        class="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium shadow-sm hover:bg-accent hover:text-accent-foreground"
-      >
-        View Integrations
+      <a href="/docs/guides/installations" class="block">
+        <Card client:load className="border-slate-200/60 dark:border-slate-700/50 hover:border-indigo-500 dark:hover:border-violet-400 transition-colors cursor-pointer">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <svg class="h-5 w-5 text-indigo-500 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
+              <span class="lang-en">Continue to Installation Guide</span>
+              <span class="lang-es">Continuar a Guía de Instalación</span>
+            </CardTitle>
+            <CardDescription>
+              <span class="lang-en">Step-by-step installation for all supported databases</span>
+              <span class="lang-es">Instalación paso a paso para todas las bases de datos soportadas</span>
+            </CardDescription>
+          </CardHeader>
+        </Card>
       </a>
     </div>
   </div>
