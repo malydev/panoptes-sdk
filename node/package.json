@@ -1,5 +1,5 @@
 {
-	"name": "@panoptes/sdk",
+	"name": "panoptes-sdk",
 	"version": "0.2.0",
 	"description": "Panoptes SQL auditing SDK for Node.js with multi-database support, before/after data capture, and database transport",
 	"author": "malydev",
@@ -7,7 +7,7 @@
 	"homepage": "https://github.com/malydev/panoptes-sdk#readme",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/malydev/panoptes-sdk.git"
+		"url": "git+https://github.com/malydev/panoptes-sdk.git"
 	},
 	"bugs": {
 		"url": "https://github.com/malydev/panoptes-sdk/issues"
